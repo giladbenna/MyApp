@@ -48,7 +48,7 @@ class _MenuPageState extends State<MenuPage> {
                       left: 30,
                       bottom: 130,
                       child: Text(
-                        "Make Memoris On Your \nNext Trip",
+                        "Make Memoris On Your \nNext Trip HII ",
                         style: TextStyle(
                           fontFamily: 'titleFont',
                           fontSize: 24,
