@@ -1,0 +1,27 @@
+[
+  {
+    "id": "1",
+    "url": "https://www.muchbetteradventures.com/magazine/content/images/2020/01/02173633/GettyImages-944543546-1.jpg",
+    "title": "Adventure",
+    "category":"adventure"
+
+  },
+  {
+    "id": "2",
+    "url": "https://www.usatoday.com/gcdn/presto/2022/01/24/USAT/0177aa7e-80bb-4046-bafd-9ddeee63a2da-Sandals_Royal_Caribbean-sm.jpg",
+    "title": "Vacation",
+    "category":"vacation"
+  },
+  {
+    "id": "3",
+    "url": "https://www.tripsavvy.com/thmb/pT_ZAje6cYUx8w2b4nsCk3FrxRU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/car-traveling-along-winding-road--maui--hawaii--america--usa-737142515-9d7096b173654472968075d805273c8f.jpg",
+    "title": "Road Trip",
+    "category":"roadtrip"
+  },
+  {
+    "id": "4",
+    "url": "https://images.inc.com/uploaded_files/image/1920x1080/getty_522735456_249841.jpg",
+    "title": "Shopping",
+    "category":"shopping"
+  }
+]
