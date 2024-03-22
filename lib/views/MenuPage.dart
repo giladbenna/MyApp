@@ -117,31 +117,31 @@ class _MenuPageState extends State<MenuPage> {
                     return ClipRRect(
                       borderRadius: BorderRadius.circular(16.0),
                       child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Color.fromRGBO(191, 172, 202, 1)
-                                  .withOpacity(0.0), // Top: Fully transparent
-                              Color.fromRGBO(50, 247, 109, 1)
-                                  .withOpacity(0.7), // Transition to solid
-                              Color.fromRGBO(
-                                  50, 247, 109, 1), // Solid central part
-                              Color.fromRGBO(50, 247, 109, 1)
-                                  .withOpacity(0.7), // Transition back to color
-                              Color.fromRGBO(191, 172, 202, 1).withOpacity(
-                                  0.0), // Bottom: Fully transparent
-                            ],
-                            stops: const [
-                              0.0,
-                              0.05,
-                              0.5,
-                              0.95,
-                              1.0
-                            ], // Adjust these stops to control the blend area
-                          ),
-                        ),
+                        // decoration: BoxDecoration(
+                        //   gradient: LinearGradient(
+                        //     begin: Alignment.topCenter,
+                        //     end: Alignment.bottomCenter,
+                        //     colors: [
+                        //       Color.fromRGBO(191, 172, 202, 1)
+                        //           .withOpacity(0.0), // Top: Fully transparent
+                        //       Color.fromRGBO(50, 247, 109, 1)
+                        //           .withOpacity(0.7), // Transition to solid
+                        //       Color.fromRGBO(
+                        //           50, 247, 109, 1), // Solid central part
+                        //       Color.fromRGBO(50, 247, 109, 1)
+                        //           .withOpacity(0.7), // Transition back to color
+                        //       Color.fromRGBO(191, 172, 202, 1).withOpacity(
+                        //           0.0), // Bottom: Fully transparent
+                        //     ],
+                        //     stops: const [
+                        //       0.0,
+                        //       0.05,
+                        //       0.5,
+                        //       0.95,
+                        //       1.0
+                        //     ], // Adjust these stops to control the blend area
+                        //   ),
+                        // ),
                         padding: const EdgeInsets.only(
                             bottom: 30.0, left: 10.0, right: 10.0),
                         child: GridView.builder(
