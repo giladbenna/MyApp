@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AnimalMenu extends StatelessWidget {
+class AnimalMenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

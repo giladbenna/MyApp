@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:my_app/models/ImageData.dart';
 import 'package:my_app/services/ImageService.dart';
 import 'package:my_app/views/CategoryTripPage.dart';
-import 'package:my_app/views/AnimalMenu.dart';
 import 'package:my_app/widgets/CustomSearchBar%20.dart';
+import 'package:my_app/widgets/MyImageCollage%20.dart';
 //import 'package:my_app/widgets/MyImageCollage%20.dart';
 
 class MenuPage extends StatefulWidget {
@@ -18,10 +18,16 @@ class _MenuPageState extends State<MenuPage> {
 
   final String urlAnimals =
       'https://t4.ftcdn.net/jpg/04/15/79/09/360_F_415790935_7va5lMHOmyhvAcdskXbSx7lDJUp0cfja.jpg';
+  List<String> animalsUrls = [
+    'https://static.nationalgeographic.es/files/expeditions.jpg?url=https://www.nationalgeographicexpeditions.eu/wp-content/uploads/2020/06/leopard-okavango-delta-botswana-shutterstock-240308062-750x400.jpg',
+    'https://img.theweek.in/content/dam/week/news/sci-tech/image/nature-animals-evolution-shut.jpg',
+    'https://res.cloudinary.com/enchanting/q_70,f_auto,w_600,h_400,c_fit/ymt-web/2023/01/Lions-South-Africa.jpg',
+    'https://www.tripsavvy.com/thmb/QoBsYHGxoSaqCM50IbLZoqtEQE0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-200571828-001-57b6d0f45f9b58cdfd5cfe75.jpg',
+    'https://media.istockphoto.com/id/1702675982/photo/the-most-well-known-animals-in-africa-walk-in-group-across-the-plain.webp?b=1&s=170667a&w=0&k=20&c=YTobTpqhayS_PKls7fk7SX8IqFkaPEH30L-M9rjzlWY='
+  ];
+
   final String urlMenu =
       'https://www.10wallpaper.com/wallpaper/1152x864/1606/Backpackers_Travel_aesthetic-2016_Sport_HD_Wallpaper_1152x864.jpg';
-
-  //https://wallpapers.com/images/featured/travel-hd-axhrsecphqby11wk.jpg
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +50,11 @@ class _MenuPageState extends State<MenuPage> {
                       height: 500,
                       fit: BoxFit.cover,
                     ),
-                    Positioned(
+                    const Positioned(
                       left: 30,
                       bottom: 130,
                       child: Text(
-                        "Make Memoris On Your \nNext Trip HII ",
+                        "Make Memoris On Your \nNext Trip",
                         style: TextStyle(
                           fontFamily: 'titleFont',
                           fontSize: 24,
@@ -108,121 +114,126 @@ class _MenuPageState extends State<MenuPage> {
                       return item.title.toLowerCase().contains(searchQuery);
                     }).toList();
 
-                    return Container(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Color.fromRGBO(191, 172, 202, 1)
-                                .withOpacity(0.0), // Top: Fully transparent
-                            Color.fromRGBO(50, 247, 109, 1)
-                                .withOpacity(0.7), // Transition to solid
-                            Color.fromRGBO(
-                                50, 247, 109, 1), // Solid central part
-                            Color.fromRGBO(50, 247, 109, 1)
-                                .withOpacity(0.7), // Transition back to color
-                            Color.fromRGBO(191, 172, 202, 1)
-                                .withOpacity(0.0), // Bottom: Fully transparent
-                          ],
-                          stops: const [
-                            0.0,
-                            0.05,
-                            0.5,
-                            0.95,
-                            1.0
-                          ], // Adjust these stops to control the blend area
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(16.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Color.fromRGBO(191, 172, 202, 1)
+                                  .withOpacity(0.0), // Top: Fully transparent
+                              Color.fromRGBO(50, 247, 109, 1)
+                                  .withOpacity(0.7), // Transition to solid
+                              Color.fromRGBO(
+                                  50, 247, 109, 1), // Solid central part
+                              Color.fromRGBO(50, 247, 109, 1)
+                                  .withOpacity(0.7), // Transition back to color
+                              Color.fromRGBO(191, 172, 202, 1).withOpacity(
+                                  0.0), // Bottom: Fully transparent
+                            ],
+                            stops: const [
+                              0.0,
+                              0.05,
+                              0.5,
+                              0.95,
+                              1.0
+                            ], // Adjust these stops to control the blend area
+                          ),
                         ),
-                      ),
-                      padding: const EdgeInsets.only(
-                          bottom: 30.0, left: 10.0, right: 10.0),
-                      child: GridView.builder(
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                          childAspectRatio: 1.0,
-                        ),
-                        itemCount: filteredData.length,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => CategoryTripPage(
-                                      category: filteredData[index].category!),
-                                ),
-                              );
-                            },
-                            child: Container(
-                              child: Stack(
-                                children: [
-                                  Positioned.fill(
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(8),
-                                      child: Image.network(
-                                        filteredData[index].url,
-                                        fit: BoxFit.cover,
+                        padding: const EdgeInsets.only(
+                            bottom: 30.0, left: 10.0, right: 10.0),
+                        child: GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 10,
+                            childAspectRatio: 1.0,
+                          ),
+                          itemCount: filteredData.length,
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => CategoryTripPage(
+                                        category:
+                                            filteredData[index].category!),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                child: Stack(
+                                  children: [
+                                    Positioned.fill(
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(8),
+                                        child: Image.network(
+                                          filteredData[index].url,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  const Positioned(
-                                    right:
-                                        10, // Adjust the position according to your UI
-                                    bottom:
-                                        10, // Adjust the position according to your UI
-                                    child: Icon(
-                                      Icons
-                                          .arrow_forward_ios, // Right arrow icon
-                                      color: Colors.white, // Icon color
-                                      size: 24, // Icon size
+                                    const Positioned(
+                                      right:
+                                          10, // Adjust the position according to your UI
+                                      bottom:
+                                          10, // Adjust the position according to your UI
+                                      child: Icon(
+                                        Icons
+                                            .arrow_forward_ios, // Right arrow icon
+                                        color: Colors.white, // Icon color
+                                        size: 24, // Icon size
+                                      ),
                                     ),
-                                  ),
-                                  const Positioned(
-                                    right:
-                                        20, // Adjust the position according to your UI
-                                    bottom:
-                                        10, // Adjust the position according to your UI
-                                    child: Icon(
-                                      Icons
-                                          .arrow_forward_ios, // Right arrow icon
-                                      color: Colors.white, // Icon color
-                                      size: 24, // Icon size
+                                    const Positioned(
+                                      right:
+                                          20, // Adjust the position according to your UI
+                                      bottom:
+                                          10, // Adjust the position according to your UI
+                                      child: Icon(
+                                        Icons
+                                            .arrow_forward_ios, // Right arrow icon
+                                        color: Colors.white, // Icon color
+                                        size: 24, // Icon size
+                                      ),
                                     ),
-                                  ),
-                                  Positioned(
-                                    right: 45, // Close to the edge
-                                    bottom: 9, // Aligned with the icon
-                                    child: Text(
-                                      filteredData[index]
-                                          .title, // Text to be displayed
-                                      style: const TextStyle(
-                                        fontFamily: 'titleFont',
-                                        fontWeight: FontWeight.w400,
-                                        color: Colors.white, // Text color
-                                        fontSize: 18, // Text size
-                                        shadows: <Shadow>[
-                                          Shadow(
-                                            offset: Offset(1.0,
-                                                1.0), // Horizontal and vertical offset
-                                            blurRadius: 3.0, // The blur radius
-                                            color: Color.fromARGB(
-                                                255, 0, 0, 0), // Shadow color
-                                          ),
+                                    Positioned(
+                                      right: 45, // Close to the edge
+                                      bottom: 9, // Aligned with the icon
+                                      child: Text(
+                                        filteredData[index]
+                                            .title, // Text to be displayed
+                                        style: const TextStyle(
+                                          fontFamily: 'titleFont',
+                                          fontWeight: FontWeight.w400,
+                                          color: Colors.white, // Text color
+                                          fontSize: 18, // Text size
+                                          shadows: <Shadow>[
+                                            Shadow(
+                                              offset: Offset(1.0,
+                                                  1.0), // Horizontal and vertical offset
+                                              blurRadius:
+                                                  3.0, // The blur radius
+                                              color: Color.fromARGB(
+                                                  255, 0, 0, 0), // Shadow color
+                                            ),
 
-                                          // Add more Shadow objects if you want multiple shadows or a more complex effect
-                                        ],
+                                            // Add more Shadow objects if you want multiple shadows or a more complex effect
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       ),
                     );
                   } else if (snapshot.hasError) {
@@ -233,48 +244,49 @@ class _MenuPageState extends State<MenuPage> {
                 },
               ),
               SizedBox(height: 20),
-              // SizedBox(
-              //   // Providing a specific height to the widget that contains Expanded widgets
-              //   height: 600, // Adjust this height according to your needs
-              //   child: MyImageCollageWithURLs(
-              //     imageUrl1: urlAnimals,
-              //     imageUrl2: urlAnimals,
-              //     imageUrl3: urlAnimals,
-              //   ),
-              // ),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => AnimalMenu()),
-                  );
-                },
-                child: Container(
-                  width: double
-                      .infinity, // Makes the container take up all available width
-                  height: 400, // Set a fixed height for your button
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(
-                          urlAnimals), // Replace with your image URL
-                      fit: BoxFit
-                          .cover, // Covers the area of the button without stretching the image
-                    ),
-                    borderRadius: BorderRadius.circular(
-                        10), // Optional: if you want rounded corners
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Go to Animal Menu',
-                      style: TextStyle(
-                        color: Colors
-                            .white, // Choose a color that contrasts well with your image
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+              SizedBox(
+                // Providing a specific height to the widget that contains Expanded widgets
+                height: 500, // Adjust this height according to your needs
+                child: MyImageCollageWithURLs(
+                  imageUrl1: animalsUrls[0],
+                  imageUrl2: animalsUrls[3],
+                  imageUrl3: animalsUrls[2],
+                  imageUrl4: animalsUrls[1],
                 ),
               ),
+              // InkWell(
+              //   onTap: () {
+              //     Navigator.of(context).push(
+              //       MaterialPageRoute(builder: (context) => AnimalMenu()),
+              //     );
+              //   },
+              //   child: Container(
+              //     width: double
+              //         .infinity, // Makes the container take up all available width
+              //     height: 400, // Set a fixed height for your button
+              //     decoration: BoxDecoration(
+              //       image: DecorationImage(
+              //         image: NetworkImage(
+              //             urlAnimals), // Replace with your image URL
+              //         fit: BoxFit
+              //             .cover, // Covers the area of the button without stretching the image
+              //       ),
+              //       borderRadius: BorderRadius.circular(
+              //           10), // Optional: if you want rounded corners
+              //     ),
+              //     child: Center(
+              //       child: Text(
+              //         'Go to Animal Menu',
+              //         style: TextStyle(
+              //           color: Colors
+              //               .white, // Choose a color that contrasts well with your image
+              //           fontSize: 18,
+              //           fontWeight: FontWeight.bold,
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
