@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/models/CategoryTripCard.dart';
 import 'package:my_app/models/ImageData.dart';
 import 'package:my_app/services/ImageService.dart';
 import 'package:my_app/views/InformationPage.dart';
@@ -37,14 +38,14 @@ class _CategoryTripPageState extends State<CategoryTripPage> {
                 },
               ),
               SizedBox(height: 20),
-              FutureBuilder<List<ImageData>>(
+              FutureBuilder<List<CategoryTripCard>>(
                 future:
                     _imageService.loadImageDetailsByCategory(widget.category),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done &&
                       snapshot.hasData) {
                     // Filter picturesData based on the searchQuery
-                    final List<ImageData> filteredData =
+                    final List<CategoryTripCard> filteredData =
                         snapshot.data!.where((item) {
                       return item.title.toLowerCase().contains(searchQuery);
                     }).toList();
@@ -78,7 +79,6 @@ class _CategoryTripPageState extends State<CategoryTripPage> {
                                   MaterialPageRoute(
                                     builder: (context) => TripInformation(
                                       imageId: filteredData[index].id,
-                                      imageCategory: widget.category,
                                     ),
                                   ),
                                 );

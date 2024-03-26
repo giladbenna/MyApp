@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:my_app/Providers/CatagoryProvider.dart';
 import 'package:my_app/models/ImageDataDetails.dart';
 import 'package:my_app/services/ImageService.dart';
@@ -8,11 +9,8 @@ import 'package:provider/provider.dart';
 
 class TripInformation extends StatefulWidget {
   final String imageId;
-  final String imageCategory;
 
-  const TripInformation(
-      {Key? key, required this.imageId, required this.imageCategory})
-      : super(key: key);
+  const TripInformation({Key? key, required this.imageId}) : super(key: key);
 
   @override
   _TripInformationState createState() => _TripInformationState();
@@ -56,59 +54,77 @@ class _TripInformationState extends State<TripInformation> {
             final tripDetails = snapshot.data!;
             return SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Stack(
-                      alignment: Alignment.bottomLeft,
-                      clipBehavior: Clip.none,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15.0),
-                          child: Image.network(
-                            tripDetails.url,
-                            width: double.infinity,
-                            height: 200,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Positioned(
-                          bottom: -55,
-                          left: 15,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
-                                  spreadRadius: 0,
-                                  blurRadius: 6,
-                                  offset: const Offset(0, 3),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Container(
+                        padding: const EdgeInsets.only(
+                            left: 8.0,
+                            right: 8.0,
+                            top: 10.0,
+                            bottom: 10.0), // Adjust padding as needed
+
+                        color: Color.fromARGB(22, 77, 202, 171),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Stack(
+                              alignment: Alignment.bottomLeft,
+                              clipBehavior: Clip.none,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  child: Image.network(
+                                    tripDetails.url,
+                                    width: double.infinity,
+                                    height: 200,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Positioned(
+                                  bottom: -55,
+                                  left: 15,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black.withOpacity(0.3),
+                                          spreadRadius: 0,
+                                          blurRadius: 6,
+                                          offset: const Offset(0, 3),
+                                        ),
+                                      ],
+                                    ),
+                                    child: CircleAvatar(
+                                      radius: 60,
+                                      backgroundImage: NetworkImage(
+                                          tripDetails.profileImage),
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
-                            child: CircleAvatar(
-                              radius: 60,
-                              backgroundImage:
-                                  NetworkImage(tripDetails.profileImage),
+                            const SizedBox(height: 65),
+                            Text(
+                              tripDetails.title,
+                              style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'titleFont'),
                             ),
-                          ),
+                            SizedBox(height: 10),
+                            Text(
+                              tripDetails.description,
+                              style: TextStyle(
+                                  fontSize: 16, fontFamily: 'primeryFont'),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    const SizedBox(height: 65),
-                    Text(
-                      tripDetails.title,
-                      style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'titleFont'),
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      tripDetails.description,
-                      style: TextStyle(fontSize: 16, fontFamily: 'primeryFont'),
+                      ),
                     ),
                     SizedBox(height: 20),
 
