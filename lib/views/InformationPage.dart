@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/Providers/CatagoryProvider.dart';
 import 'package:my_app/models/ImageDataDetails.dart';
 import 'package:my_app/services/ImageService.dart';
 import 'package:my_app/views/ItemShopPage.dart';
 import 'package:my_app/widgets/TripCardsSlide.dart';
+import 'package:provider/provider.dart';
 
 class TripInformation extends StatefulWidget {
   final String imageId;
@@ -17,15 +19,27 @@ class TripInformation extends StatefulWidget {
 }
 
 class _TripInformationState extends State<TripInformation> {
-  late Future<ImageDataDetails> _imageDetails;
+  Future<ImageDataDetails>? _imageDetails;
   final ImageService _imageService = ImageService();
   Set<int> _selectedImages = {};
 
   @override
   void initState() {
     super.initState();
-    _imageDetails = _imageService.loadImageCategoryDetails(
-        widget.imageId, widget.imageCategory);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final selectedCategory =
+          Provider.of<CategoryProvider>(context, listen: false)
+              .selectedCategory;
+      print("Selected Category: $selectedCategory");
+
+      // Ensure this method sets the futureItems correctly.
+      _imageDetails = _imageService.loadImageCategoryDetails(
+          widget.imageId, selectedCategory);
+
+      // If you need to refresh the UI once this future is set, call setState.
+      setState(() {});
+    });
   }
 
   @override
@@ -261,6 +275,12 @@ class _TripInformationState extends State<TripInformation> {
                           ),
                         ],
                       ),
+                    ),
+                    SizedBox(height: 20),
+
+                    Container(
+                      height: 1,
+                      color: Colors.grey,
                     ),
                     SizedBox(height: 20),
 

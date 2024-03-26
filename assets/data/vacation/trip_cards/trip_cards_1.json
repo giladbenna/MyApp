@@ -1,0 +1,20 @@
+[
+  {
+    "urlPicture": "https://lh3.googleusercontent.com/p/AF1QipOj1cqJjG6ez4yCbm34BpCTxgMSAYr4pABaiXz_=s680-w680-h510",
+    "subTitle": "GUIDED TOUR ",
+    "title": "Castillo San Felipe del Morro",
+    "time": "3",
+    "rate": 4.8,
+    "cost": 199.99,
+    "likes": 150
+  },
+  {
+    "urlPicture": "https://lh3.googleusercontent.com/p/AF1QipPh4UdLMwQIIRSvOfiC9izrHvZMgQcoTgFQbMMw=s680-w680-h510",
+    "subTitle": "WATER GUIDED TOUR",
+    "title": "El Yunque National Forest",
+    "time": "1.5",
+    "rate": 4.2,
+    "cost": 249.99,
+    "likes": 250
+  }
+]

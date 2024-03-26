@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/Providers/CatagoryProvider.dart';
+import 'package:my_app/views/FirstPage.dart';
+import 'package:my_app/views/LoginPage.dart';
 import 'package:my_app/views/MenuPage.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: MenuPage(),
+      home: FirstPage(),
     );
   }
 }
