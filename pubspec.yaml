@@ -85,8 +85,26 @@ flutter:
     - assets/data/shopping/image_details_shopping_4.json
     
     - assets/data/vacation/trip_cards/trip_cards_1.json
+    - assets/data/vacation/trip_cards/trip_cards_2.json
+    - assets/data/vacation/trip_cards/trip_cards_3.json
+    - assets/data/vacation/trip_cards/trip_cards_4.json
 
     - assets/data/adventure/trip_cards/trip_cards_1.json
+    - assets/data/adventure/trip_cards/trip_cards_2.json
+    - assets/data/adventure/trip_cards/trip_cards_3.json
+    - assets/data/adventure/trip_cards/trip_cards_4.json
+
+    - assets/data/shopping/trip_cards/trip_cards_1.json
+    - assets/data/shopping/trip_cards/trip_cards_2.json
+    - assets/data/shopping/trip_cards/trip_cards_3.json
+    - assets/data/shopping/trip_cards/trip_cards_4.json
+
+    - assets/data/roadtrip/trip_cards/trip_cards_1.json
+    - assets/data/roadtrip/trip_cards/trip_cards_2.json
+    - assets/data/roadtrip/trip_cards/trip_cards_3.json
+    - assets/data/roadtrip/trip_cards/trip_cards_4.json
+
+
 
 
 
