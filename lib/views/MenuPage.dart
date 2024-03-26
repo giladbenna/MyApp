@@ -119,6 +119,8 @@ class _MenuPageState extends State<MenuPage> {
                     return ClipRRect(
                       borderRadius: BorderRadius.circular(16.0),
                       child: Container(
+                        color: Color.fromARGB(49, 153, 209, 50),
+
                         // decoration: BoxDecoration(
                         //   gradient: LinearGradient(
                         //     begin: Alignment.topCenter,
@@ -217,7 +219,7 @@ class _MenuPageState extends State<MenuPage> {
                                             .title, // Text to be displayed
                                         style: const TextStyle(
                                           fontFamily: 'titleFont',
-                                          fontWeight: FontWeight.w400,
+                                          fontWeight: FontWeight.w900,
                                           color: Colors.white, // Text color
                                           fontSize: 18, // Text size
                                           shadows: <Shadow>[

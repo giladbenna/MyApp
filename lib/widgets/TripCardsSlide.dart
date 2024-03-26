@@ -50,7 +50,7 @@ class _TripCardsSlideState extends State<TripCardsSlide> {
             borderRadius: BorderRadius.circular(15.0),
             child: Container(
               color: Color.fromARGB(49, 153, 209, 50),
-              height: 320, // Increased height to accommodate all elements
+              height: 340, // Increased height to accommodate all elements
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: snapshot.data!.length,
@@ -62,7 +62,7 @@ class _TripCardsSlideState extends State<TripCardsSlide> {
                     ),
                     margin: EdgeInsets.all(8),
                     child: Container(
-                      width: 220,
+                      width: 180,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -84,7 +84,8 @@ class _TripCardsSlideState extends State<TripCardsSlide> {
                               style: TextStyle(
                                   fontSize: 12,
                                   color: Colors.grey,
-                                  fontWeight: FontWeight.w600),
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'primeryFont'),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -94,8 +95,10 @@ class _TripCardsSlideState extends State<TripCardsSlide> {
                             child: Text(
                               tripCard.title,
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                              overflow: TextOverflow.ellipsis,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: 'titleFont'),
+                              overflow: TextOverflow.clip,
                             ),
                           ),
                           Padding(
@@ -103,7 +106,8 @@ class _TripCardsSlideState extends State<TripCardsSlide> {
                                 horizontal: 8.0, vertical: 4.0),
                             child: Text(
                               "${tripCard.time} hours",
-                              style: TextStyle(fontSize: 14),
+                              style: TextStyle(
+                                  fontSize: 11, fontFamily: 'primeryFont'),
                             ),
                           ),
                           SizedBox(height: 30),

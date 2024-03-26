@@ -86,6 +86,9 @@ flutter:
     
     - assets/data/vacation/trip_cards/trip_cards_1.json
 
+    - assets/data/adventure/trip_cards/trip_cards_1.json
+
+
 
 
     - assets/images/login_picture.png
@@ -100,7 +103,11 @@ flutter:
 
     - family: titleFont
       fonts:
-        - asset: assets/fonts/Anton-Regular.ttf
+        - asset: assets/fonts/RobotoSerif_28pt-Medium.ttf
+    
+    - family: titleFont2
+      fonts:
+        - asset: assets/fonts/PassionOne-Regular.ttf
 
 
 

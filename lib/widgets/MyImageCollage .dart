@@ -83,6 +83,7 @@ class MyImageCollageWithURLs extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
+                            fontFamily: 'titleFont',
                             color: Colors.white,
                             shadows: [
                               Shadow(
@@ -119,7 +120,12 @@ class MyImageCollageWithURLs extends StatelessWidget {
                                   builder: (context) => AnimalMenuPage()),
                             );
                           },
-                          label: Text("See Animals"),
+                          label: Text(
+                            "See Animals",
+                            style: TextStyle(
+                              fontFamily: 'primeryFont',
+                            ),
+                          ),
                           icon: Icon(Icons.pets),
                           backgroundColor: Colors.white,
                           elevation: 4,
