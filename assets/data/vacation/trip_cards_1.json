@@ -1,0 +1,71 @@
+[
+  {
+    "urlPicture": "https://i.ebayimg.com/images/g/goAAAOSw-3pfBEtP/s-l1200.webp",
+    "subTitle": "A brief subtitle here",
+    "title": "Main Title",
+    "time": "2",
+    "rate": 4.5,
+    "cost": 199.99,
+    "likes": 150
+  },
+  {
+    "urlPicture": "https://wallpapers.com/images/featured/picture-en3dnh2zi84sgt3t.jpg",
+    "subTitle": "Another brief subtitle",
+    "title": "Second Title",
+    "time": "1.5",
+    "rate": 4.7,
+    "cost": 249.99,
+    "likes": 250
+  },  {
+    "urlPicture": "https://i.ebayimg.com/images/g/goAAAOSw-3pfBEtP/s-l1200.webp",
+    "subTitle": "A brief subtitle here",
+    "title": "Main Title",
+    "time": "2",
+    "rate": 4.5,
+    "cost": 199.99,
+    "likes": 150
+  },
+  {
+    "urlPicture": "https://wallpapers.com/images/featured/picture-en3dnh2zi84sgt3t.jpg",
+    "subTitle": "Another brief subtitle",
+    "title": "Second Title",
+    "time": "1.5",
+    "rate": 4.7,
+    "cost": 249.99,
+    "likes": 250
+  },  {
+    "urlPicture": "https://i.ebayimg.com/images/g/goAAAOSw-3pfBEtP/s-l1200.webp",
+    "subTitle": "A brief subtitle here",
+    "title": "Main Title",
+    "time": "2",
+    "rate": 4.5,
+    "cost": 199.99,
+    "likes": 150
+  },
+  {
+    "urlPicture": "https://wallpapers.com/images/featured/picture-en3dnh2zi84sgt3t.jpg",
+    "subTitle": "Another brief subtitle",
+    "title": "Second Title",
+    "time": "1.5",
+    "rate": 4.7,
+    "cost": 249.99,
+    "likes": 250
+  },  {
+    "urlPicture": "https://i.ebayimg.com/images/g/goAAAOSw-3pfBEtP/s-l1200.webp",
+    "subTitle": "A brief subtitle here",
+    "title": "Main Title",
+    "time": "2",
+    "rate": 4.5,
+    "cost": 199.99,
+    "likes": 150
+  },
+  {
+    "urlPicture": "https://wallpapers.com/images/featured/picture-en3dnh2zi84sgt3t.jpg",
+    "subTitle": "Another brief subtitle",
+    "title": "Second Title",
+    "time": "1.5",
+    "rate": 4.7,
+    "cost": 249.99,
+    "likes": 250
+  }
+]

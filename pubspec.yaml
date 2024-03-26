@@ -31,6 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   google_maps_flutter: ^2.6.0
+  provider: ^6.0.0
 
 
 
@@ -81,6 +82,8 @@ flutter:
     - assets/data/shopping/image_details_shopping_2.json
     - assets/data/shopping/image_details_shopping_3.json
     - assets/data/shopping/image_details_shopping_4.json
+    
+    - assets/data/vacation/trip_cards.json
 
 
 

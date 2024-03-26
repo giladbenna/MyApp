@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_app/models/ImageDataDetails.dart';
 import 'package:my_app/services/ImageService.dart';
 import 'package:my_app/views/ItemShopPage.dart';
+import 'package:my_app/widgets/TripCardsSlide.dart';
 
 class TripInformation extends StatefulWidget {
   final String imageId;
@@ -104,17 +105,17 @@ class _TripInformationState extends State<TripInformation> {
 
                     SizedBox(height: 20), // Optional spacing
 
-                    Column(
+                    const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
+                        Text(
                           'Important Things For This Trip',
                           textAlign: TextAlign.center,
                           style:
                               TextStyle(fontSize: 20, fontFamily: 'titleFont'),
                         ),
-                        const SizedBox(height: 10),
-                        const Text(
+                        SizedBox(height: 10),
+                        Text(
                           'Choose the items you already got ! \n      then you can see where to buy them in the next page ',
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -260,6 +261,11 @@ class _TripInformationState extends State<TripInformation> {
                           ),
                         ],
                       ),
+                    ),
+                    SizedBox(height: 20),
+
+                    TripCardsSlide(
+                      id: tripDetails.id,
                     ),
 
                     SizedBox(height: 20),
