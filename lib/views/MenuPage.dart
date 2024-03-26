@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/Providers/CatagoryProvider.dart';
 import 'package:my_app/models/ImageData.dart';
 import 'package:my_app/services/ImageService.dart';
 import 'package:my_app/views/CategoryTripPage.dart';
 import 'package:my_app/widgets/CustomSearchBar%20.dart';
 import 'package:my_app/widgets/MyImageCollage%20.dart';
+import 'package:provider/provider.dart';
 //import 'package:my_app/widgets/MyImageCollage%20.dart';
 
 class MenuPage extends StatefulWidget {
@@ -158,6 +160,11 @@ class _MenuPageState extends State<MenuPage> {
                           itemBuilder: (context, index) {
                             return GestureDetector(
                               onTap: () {
+                                Provider.of<CategoryProvider>(context,
+                                        listen: false)
+                                    .updateCategory(
+                                        filteredData[index].category!);
+
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
                                     builder: (context) => CategoryTripPage(

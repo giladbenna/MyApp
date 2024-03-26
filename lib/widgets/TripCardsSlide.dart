@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/Providers/CatagoryProvider.dart';
 import 'package:my_app/models/RecommendTripCard.dart';
 import 'package:my_app/services/TripCardsService.dart';
+import 'package:provider/provider.dart';
 
 class TripCardsSlide extends StatefulWidget {
   final String id;
@@ -19,6 +21,13 @@ class _TripCardsSlideState extends State<TripCardsSlide> {
     super.initState();
     futureItems = TripCardsService().fetchVacationTripCardsById(
         widget.id); // Fetch items when the widget is initialized
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final selectedCategory =
+          Provider.of<CategoryProvider>(context, listen: false)
+              .selectedCategory;
+      print(selectedCategory);
+      // You can now use selectedCategory to fetch data or for other purposes
+    });
   }
 
   @override
