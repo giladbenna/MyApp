@@ -157,11 +157,14 @@ class _TripInformationState extends State<TripInformation> {
                     SizedBox(height: 20),
 
                     Container(
-                      height: 100,
+                      height:
+                          140, // Adjust the height if needed to better fit the title
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: tripDetails.importantThings.length,
                         itemBuilder: (context, index) {
+                          final importantThing =
+                              tripDetails.importantThings[index];
                           return GestureDetector(
                             onTap: () => setState(() {
                               if (_selectedImages.contains(index)) {
@@ -176,27 +179,32 @@ class _TripInformationState extends State<TripInformation> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 border: _selectedImages.contains(index)
-                                    ? Border.all(color: Colors.blue, width: 2)
-                                    : null,
+                                    ? Border.all(
+                                        color: Colors.blue,
+                                        width:
+                                            2) // Highlight selected items with a blue border
+                                    : null, // No border for unselected items
                               ),
-                              child: Stack(
-                                fit: StackFit.expand,
+                              child: Column(
                                 children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: Image.network(
-                                      tripDetails
-                                          .importantThings[index].imageUrl,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  if (_selectedImages.contains(index))
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.black.withOpacity(0.3),
-                                        borderRadius: BorderRadius.circular(10),
+                                  Expanded(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: Image.network(
+                                        importantThing.imageUrl,
+                                        fit: BoxFit.cover,
                                       ),
                                     ),
+                                  ),
+                                  Text(
+                                    importantThing.title!,
+
+                                    style: TextStyle(
+                                        fontSize:
+                                            12), // Style the title as needed
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ],
                               ),
                             ),
@@ -204,6 +212,7 @@ class _TripInformationState extends State<TripInformation> {
                         },
                       ),
                     ),
+
                     SizedBox(height: 20),
 
                     // Button to show the number of unclicked images with full width, rounded corners, and transparent color
