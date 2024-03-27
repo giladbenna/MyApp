@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/models/CategoryTripCard.dart';
-import 'package:my_app/models/ImageData.dart';
 import 'package:my_app/services/ImageService.dart';
 import 'package:my_app/views/InformationPage.dart';
 import 'package:my_app/widgets/CustomSearchBar%20.dart';

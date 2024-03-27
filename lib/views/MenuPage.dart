@@ -6,7 +6,6 @@ import 'package:my_app/views/CategoryTripPage.dart';
 import 'package:my_app/widgets/CustomSearchBar%20.dart';
 import 'package:my_app/widgets/MyImageCollage%20.dart';
 import 'package:provider/provider.dart';
-//import 'package:my_app/widgets/MyImageCollage%20.dart';
 
 class MenuPage extends StatefulWidget {
   @override
@@ -120,32 +119,6 @@ class _MenuPageState extends State<MenuPage> {
                       borderRadius: BorderRadius.circular(16.0),
                       child: Container(
                         color: Color.fromARGB(49, 153, 209, 50),
-
-                        // decoration: BoxDecoration(
-                        //   gradient: LinearGradient(
-                        //     begin: Alignment.topCenter,
-                        //     end: Alignment.bottomCenter,
-                        //     colors: [
-                        //       Color.fromRGBO(191, 172, 202, 1)
-                        //           .withOpacity(0.0), // Top: Fully transparent
-                        //       Color.fromRGBO(50, 247, 109, 1)
-                        //           .withOpacity(0.7), // Transition to solid
-                        //       Color.fromRGBO(
-                        //           50, 247, 109, 1), // Solid central part
-                        //       Color.fromRGBO(50, 247, 109, 1)
-                        //           .withOpacity(0.7), // Transition back to color
-                        //       Color.fromRGBO(191, 172, 202, 1).withOpacity(
-                        //           0.0), // Bottom: Fully transparent
-                        //     ],
-                        //     stops: const [
-                        //       0.0,
-                        //       0.05,
-                        //       0.5,
-                        //       0.95,
-                        //       1.0
-                        //     ], // Adjust these stops to control the blend area
-                        //   ),
-                        // ),
                         padding: const EdgeInsets.only(
                             bottom: 30.0, left: 10.0, right: 10.0),
                         child: GridView.builder(
@@ -165,13 +138,12 @@ class _MenuPageState extends State<MenuPage> {
                                 Provider.of<CategoryProvider>(context,
                                         listen: false)
                                     .updateCategory(
-                                        filteredData[index].category!);
+                                        filteredData[index].category);
 
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
                                     builder: (context) => CategoryTripPage(
-                                        category:
-                                            filteredData[index].category!),
+                                        category: filteredData[index].category),
                                   ),
                                 );
                               },
