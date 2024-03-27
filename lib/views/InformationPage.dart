@@ -198,10 +198,7 @@ class _TripInformationState extends State<TripInformation> {
                                   ),
                                   Text(
                                     importantThing.title!,
-
-                                    style: TextStyle(
-                                        fontSize:
-                                            12), // Style the title as needed
+                                    style: TextStyle(fontSize: 12),
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.center,
                                   ),
@@ -215,10 +212,8 @@ class _TripInformationState extends State<TripInformation> {
 
                     SizedBox(height: 20),
 
-                    // Button to show the number of unclicked images with full width, rounded corners, and transparent color
                     OutlinedButton(
                       onPressed: () {
-                        // Assuming _selectedImages tracks indices of selected important things,
                         // we filter to get only the unselected ones based on their indices.
                         List<ImportantThing> unselectedImportantThings =
                             tripDetails

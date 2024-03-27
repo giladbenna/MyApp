@@ -10,147 +10,106 @@ class ItemShopPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Check if the list is empty
-    if (unselectedItems.isEmpty) {
-      // The list is empty, show an image and a text message
-      return Scaffold(
-        appBar: AppBar(
-          title: Text(''),
-        ),
-        body: Center(
-          // Center the content
-          child: Column(
-            children: [
-              Image.asset(
-                  'assets/images/no_missing_items.png'), // Replace with your asset's path
-              SizedBox(height: 20), // Space between the image and the text
-              Text(
-                'No Missing Items ! \n You Are Ready For The Trip',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-        ),
-      );
-    } else {
-      // The list is not empty, show the list of items
-      return Scaffold(
-        appBar: AppBar(
-          title: Text('Missing Items'),
-        ),
-        body: ListView(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Missing Items'),
+      ),
+      body: SingleChildScrollView(
+        // Make the entire screen scrollable
+        child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "In this page Clicking \n'Find Here' \nRedirects you to the vendor's website For purchase details.",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: Image.asset(
+                'assets/images/dont_forget_pic.png',
+                fit: BoxFit.cover,
+                width: MediaQuery.of(context)
+                    .size
+                    .width, // Full width of the device
               ),
             ),
             SizedBox(height: 20),
-            // Insert the dynamic list of images and buttons here
-            ...List<Widget>.generate(unselectedItems.length, (index) {
-              return Column(
-                children: [
-                  Image.network(unselectedItems[index].imageUrl,
-                      fit: BoxFit.cover),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: OutlinedButton(
-                      onPressed: () => _launchURL(unselectedItems[index].link),
-                      style: OutlinedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                10)), // Slightly rounded corners
-                        side: BorderSide(
-                            color: Colors.blue), // Define the border color
-                        backgroundColor:
-                            Colors.transparent, // Transparent background
-                        minimumSize:
-                            Size(double.infinity, 50), // Span over the width
-                      ),
-                      child: Text('Find Here',
-                          style: TextStyle(color: Colors.blue)),
+            // Dynamically generate a list of cards
+            Column(
+              children: unselectedItems.map((item) {
+                return Card(
+                  margin: EdgeInsets.all(8),
+                  child: IntrinsicHeight(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment
+                          .stretch, // Stretch row items to fit the card height
+                      children: [
+                        Image.network(
+                          item.imageUrl,
+                          fit: BoxFit.cover,
+                          width: 100, // Fixed width for the image
+                          height: 100, // Fixed height for a uniform look
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.all(8),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment
+                                  .spaceBetween, // Space between the text and the button
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      item.title!,
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
+                                    ), // Item title
+                                    SizedBox(height: 4),
+                                    Text(
+                                      'Price: \$${item.price.toString()}',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          color:
+                                              Color.fromARGB(232, 66, 107, 31)),
+                                    ),
+                                  ],
+                                ),
+                                Align(
+                                  alignment: Alignment
+                                      .bottomRight, // Align button to the bottom-right
+                                  child: ElevatedButton.icon(
+                                    onPressed: () =>
+                                        _launchURL(item.link), // Launch the URL
+                                    icon: Icon(Icons.shopping_cart,
+                                        size: 16), // Icon inside the button
+                                    label: Text(
+                                        "Show Me"), // Text inside the button
+                                    style: ElevatedButton.styleFrom(
+                                      foregroundColor: Colors.white,
+                                      backgroundColor:
+                                          Color.fromARGB(255, 90, 162, 221),
+                                      textStyle: TextStyle(fontSize: 14),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              );
-            }),
+                );
+              }).toList(),
+            ),
           ],
         ),
-      );
-    }
+      ),
+    );
   }
 
   void _launchURL(String url) async {
-    if (!await launchUrl(Uri.parse(url))) throw 'Could not launch $url';
+    if (!await launchUrl(Uri.parse(url),
+        mode: LaunchMode.externalApplication)) {
+      throw 'Could not launch $url';
+    }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// with the top stuck 
-// return Scaffold(
-//         appBar: AppBar(
-//           title: Text('Missing Items'),
-//         ),
-//         body: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             Padding(
-//               padding: const EdgeInsets.all(8.0),
-//               child: Text(
-//                 "In this page Clicking \n'Find Here' \nRedirects you to the vendor's website For purchase details.",
-//                 textAlign: TextAlign.center,
-//                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//               ),
-//             ),
-//             SizedBox(height: 20),
-//             Expanded(
-//               // This wraps the ListView.builder
-//               child: ListView.builder(
-//                 itemCount: unselectedImages.length,
-//                 itemBuilder: (context, index) {
-//                   return Column(
-//                     children: [
-//                       Image.network(unselectedImages[index], fit: BoxFit.cover),
-//                       Padding(
-//                         padding: const EdgeInsets.all(8.0),
-//                         child: OutlinedButton(
-//                           onPressed: () => _launchURL(unselectedLinks[index]),
-//                           style: OutlinedButton.styleFrom(
-//                             shape: RoundedRectangleBorder(
-//                                 borderRadius: BorderRadius.circular(
-//                                     10)), // Slightly rounded corners
-//                             side: BorderSide(
-//                                 color: Colors.blue), // Define the border color
-//                             backgroundColor:
-//                                 Colors.transparent, // Transparent background
-//                             minimumSize: Size(
-//                                 double.infinity, 50), // Span over the width
-//                           ),
-//                           child: Text('Find Here',
-//                               style: TextStyle(color: Colors.blue)),
-//                         ),
-//                       ),
-//                     ],
-//                   );
-//                 },
-//               ),
-//             ),
-//           ],
-//         ),
-//       );

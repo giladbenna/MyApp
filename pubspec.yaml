@@ -111,9 +111,10 @@ flutter:
 
     - assets/images/login_picture.png
     - assets/images/no_missing_items.png
+    - assets/images/dont_forget_pic.png
+
 
     
-
   fonts:
     - family: primeryFont
       fonts:

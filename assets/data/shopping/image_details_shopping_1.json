@@ -9,27 +9,36 @@
     {
       "imageUrl": "https://www.rikushet.co.il/pub/media/catalog/product/cache/a237138a07ed0dd2cc8a6fa440635ea6/2/0/2005531_051_1-168828478052259.jpg",
       "link":   "https://www.rikushet.co.il/%D7%9E%D7%95%D7%A6%D7%99%D7%9C%D7%A8%D7%99%D7%9D/10558800144",
-      "title": "Jack - Wolfskin"
+      "title": "Jack - Wolfskin",
+      "price": 899.99
     },
     {
       "imageUrl":  "https://www.rikushet.co.il/pub/media/catalog/product/cache/a237138a07ed0dd2cc8a6fa440635ea6/g/n/GN10031_070_1-168828814648669.jpg",
       "link":   "https://www.rikushet.co.il/%D7%9E%D7%95%D7%A6%D7%99%D7%9C%D7%A8%D7%99%D7%9D/24558800870",
-      "title": "Hat"
+      "title": "Hat",
+      "price": 899.99
+
     },
     {
       "imageUrl":   "https://www.rikushet.co.il/pub/media/catalog/product/cache/a237138a07ed0dd2cc8a6fa440635ea6/g/n/GN87370_997_1-168828835361210.jpg",
       "link":     "https://www.rikushet.co.il/%D7%9E%D7%95%D7%A6%D7%99%D7%9C%D7%A8%D7%99%D7%9D/12115200011",
-      "title": "Sleeping Bag"
+      "title": "Sleeping Bag",
+      "price": 899.99
+
     },
     {
       "imageUrl":   "https://www.rikushet.co.il/pub/media/catalog/product/cache/a237138a07ed0dd2cc8a6fa440635ea6/h/v/HVR23_019_1-169226866440939.jpg",
       "link":     "https://www.rikushet.co.il/%D7%9E%D7%95%D7%A6%D7%99%D7%9C%D7%A8%D7%99%D7%9D/hvr23_019",
-      "title": "Mountain Shoes"
+      "title": "Mountain Shoes",
+      "price": 899.99
+
     },
     {
       "imageUrl":   "https://www.rikushet.co.il/pub/media/catalog/product/cache/a237138a07ed0dd2cc8a6fa440635ea6/b/p/BP1008_997_1-170843785734224.jpg",
       "link":     "https://www.rikushet.co.il/%D7%9E%D7%95%D7%A6%D7%99%D7%9C%D7%A8%D7%99%D7%9D/18601800002",
-      "title": "Toilet Seat"
+      "title": "Toilet Seat",
+      "price": 899.99
+
     }
   ]
 }
