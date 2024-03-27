@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/models/ImportantThing.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ItemShopPage extends StatelessWidget {
-  final List<String> unselectedImages;
-  final List<String> unselectedLinks;
+  final List<ImportantThing> unselectedItems;
 
-  const ItemShopPage(
-      {Key? key, required this.unselectedImages, required this.unselectedLinks})
+  const ItemShopPage({Key? key, required this.unselectedItems})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     // Check if the list is empty
-    if (unselectedImages.isEmpty) {
+    if (unselectedItems.isEmpty) {
       // The list is empty, show an image and a text message
       return Scaffold(
         appBar: AppBar(
@@ -52,14 +51,15 @@ class ItemShopPage extends StatelessWidget {
             ),
             SizedBox(height: 20),
             // Insert the dynamic list of images and buttons here
-            ...List<Widget>.generate(unselectedImages.length, (index) {
+            ...List<Widget>.generate(unselectedItems.length, (index) {
               return Column(
                 children: [
-                  Image.network(unselectedImages[index], fit: BoxFit.cover),
+                  Image.network(unselectedItems[index].imageUrl,
+                      fit: BoxFit.cover),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: OutlinedButton(
-                      onPressed: () => _launchURL(unselectedLinks[index]),
+                      onPressed: () => _launchURL(unselectedItems[index].link),
                       style: OutlinedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(

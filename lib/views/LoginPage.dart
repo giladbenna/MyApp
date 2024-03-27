@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/views/MenuPage.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -116,6 +117,44 @@ class _LoginPageState extends State<LoginPage> {
                         CircleBorder(), // Gives a more rounded shape to the checkbox
                   ),
                 ],
+              ),
+              SizedBox(height: 20), // Add space before the CheckboxListTile
+
+              // Login button
+              ElevatedButton(
+                onPressed: () {
+                  if (_isChecked) {
+                    // If the checkbox is checked, navigate to the MenuPage
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              MenuPage()), // Make sure MenuPage is correctly imported
+                    );
+                  } else {
+                    // If the checkbox is not checked, show a SnackBar
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Please agree to the terms to continue.'),
+                        duration: Duration(seconds: 3),
+                      ),
+                    );
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white, // Text color
+                  backgroundColor: Colors.blue, // Button color
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10), // Rounded corners
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 12.0, horizontal: 24.0),
+                  child: Text(
+                    'Log In',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
               ),
             ],
           ),

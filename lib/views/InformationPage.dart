@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:my_app/Providers/CatagoryProvider.dart';
 import 'package:my_app/models/ImageDataDetails.dart';
+import 'package:my_app/models/ImportantThing.dart';
 import 'package:my_app/services/ImageService.dart';
 import 'package:my_app/views/ItemShopPage.dart';
 import 'package:my_app/widgets/TripCardsSlide.dart';
@@ -135,7 +136,7 @@ class _TripInformationState extends State<TripInformation> {
 
                     SizedBox(height: 20), // Optional spacing
 
-                    const Column(
+                    Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
@@ -159,7 +160,7 @@ class _TripInformationState extends State<TripInformation> {
                       height: 100,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: tripDetails.importantThingsImages.length,
+                        itemCount: tripDetails.importantThings.length,
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () => setState(() {
@@ -184,7 +185,8 @@ class _TripInformationState extends State<TripInformation> {
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
                                     child: Image.network(
-                                      tripDetails.importantThingsImages[index],
+                                      tripDetails
+                                          .importantThings[index].imageUrl,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -207,30 +209,24 @@ class _TripInformationState extends State<TripInformation> {
                     // Button to show the number of unclicked images with full width, rounded corners, and transparent color
                     OutlinedButton(
                       onPressed: () {
-                        List<String> unselectedImages = tripDetails
-                            .importantThingsImages
-                            .asMap()
-                            .entries
-                            .where(
-                                (entry) => !_selectedImages.contains(entry.key))
-                            .map((entry) => entry.value)
-                            .toList();
+                        // Assuming _selectedImages tracks indices of selected important things,
+                        // we filter to get only the unselected ones based on their indices.
+                        List<ImportantThing> unselectedImportantThings =
+                            tripDetails
+                                .importantThings
+                                .asMap()
+                                .entries
+                                .where((entry) =>
+                                    !_selectedImages.contains(entry.key))
+                                .map((entry) => entry.value)
+                                .toList();
 
-                        List<String> unselectedLinks = tripDetails
-                            .importantThingsLinks
-                            .asMap()
-                            .entries
-                            .where(
-                                (entry) => !_selectedImages.contains(entry.key))
-                            .map((entry) => entry.value)
-                            .toList();
-
+                        // Navigate to the next page, passing the list of unselected ImportantThing objects.
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => ItemShopPage(
-                              unselectedImages: unselectedImages,
-                              unselectedLinks: unselectedLinks,
+                              unselectedItems: unselectedImportantThings,
                             ),
                           ),
                         );
@@ -263,7 +259,7 @@ class _TripInformationState extends State<TripInformation> {
                                 children: [
                                   TextSpan(
                                     text:
-                                        'You Are Missing ${tripDetails.importantThingsImages.length - _selectedImages.length} products 😔\n',
+                                        'You Are Missing ${tripDetails.importantThings.length - _selectedImages.length} products 😔\n',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'primeryFont',
