@@ -5,14 +5,20 @@
   "title": "Greece",
   "description": "Step back in time and explore ancient ruins, picturesque islands, and mouthwatering cuisine in Greece, the cradle of Western civilization.",
   "location": "Various islands and cities in Greece",
-  "importantThingsImages": [
-    "https://ae01.alicdn.com/kf/S301f54f9c16447c98e51b15f39f9865cu/15.jpg_80x80.jpg_.webp",
-    "https://ae01.alicdn.com/kf/Sdd7d98122be2456792d949d690a14c60H/-.jpg_80x80.jpg_.webp",
-    "https://ae01.alicdn.com/kf/S3c68fd807631443c8cf7fe73a33fe2a6m/AU.jpg_80x80.jpg_.webp"
-  ],
-  "importantThingsLinks": [
-    "https://he.aliexpress.com/item/1005006612122866.html?spm=a2g0o.productlist.main.57.6e2f88kX88kXrn&algo_pvid=8dac3465-2dff-41f3-b6bd-c85fec5ccb12&utparam-url=scene%3Asearch%7Cquery_from%3A",
-    "https://he.aliexpress.com/item/1005006597709122.html?spm=a2g0o.productlist.main.7.43b3J4gnJ4gnI5&algo_pvid=b6fbe48e-0c01-4402-8235-f7c00d10a062&utparam-url=scene%3Asearch%7Cquery_from%3A",
-    "https://he.aliexpress.com/item/1005004207807826.html?spm=a2g0o.productlist.main.17.4104f7c4TTiwqA&algo_pvid=bcc42c84-5874-4353-b09e-a1c4dc6a7d7f&utparam-url=scene%3Asearch%7Cquery_from%3A"
+  "importantThings": [
+    {
+      "imageUrl": "https://ae01.alicdn.com/kf/S301f54f9c16447c98e51b15f39f9865cu/15.jpg_80x80.jpg_.webp",
+      "link":   "https://he.aliexpress.com/item/1005006612122866.html?spm=a2g0o.productlist.main.57.6e2f88kX88kXrn&algo_pvid=8dac3465-2dff-41f3-b6bd-c85fec5ccb12&utparam-url=scene%3Asearch%7Cquery_from%3A"
+
+    },
+    {
+      "imageUrl":  "https://ae01.alicdn.com/kf/Sdd7d98122be2456792d949d690a14c60H/-.jpg_80x80.jpg_.webp",
+      "link":   "https://he.aliexpress.com/item/1005006597709122.html?spm=a2g0o.productlist.main.7.43b3J4gnJ4gnI5&algo_pvid=b6fbe48e-0c01-4402-8235-f7c00d10a062&utparam-url=scene%3Asearch%7Cquery_from%3A"
+
+    },
+    {
+      "imageUrl":   "https://ae01.alicdn.com/kf/S3c68fd807631443c8cf7fe73a33fe2a6m/AU.jpg_80x80.jpg_.webp",
+      "link":     "https://he.aliexpress.com/item/1005004207807826.html?spm=a2g0o.productlist.main.17.4104f7c4TTiwqA&algo_pvid=bcc42c84-5874-4353-b09e-a1c4dc6a7d7f&utparam-url=scene%3Asearch%7Cquery_from%3A"
+    }
   ]
 }
