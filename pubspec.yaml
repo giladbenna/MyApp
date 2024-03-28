@@ -112,6 +112,9 @@ flutter:
     - assets/images/login_picture.png
     - assets/images/no_missing_items.png
     - assets/images/dont_forget_pic.png
+    - assets/images/show_me_icon.png
+    - assets/images/show_me_icon_removebg.png
+
 
 
     

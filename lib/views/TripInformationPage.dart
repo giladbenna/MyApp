@@ -8,16 +8,17 @@ import 'package:my_app/views/ItemShopPage.dart';
 import 'package:my_app/widgets/TripCardsSlide.dart';
 import 'package:provider/provider.dart';
 
-class TripInformation extends StatefulWidget {
+class TripInformationPage extends StatefulWidget {
   final String imageId;
 
-  const TripInformation({Key? key, required this.imageId}) : super(key: key);
+  const TripInformationPage({Key? key, required this.imageId})
+      : super(key: key);
 
   @override
-  _TripInformationState createState() => _TripInformationState();
+  _TripInformationPageState createState() => _TripInformationPageState();
 }
 
-class _TripInformationState extends State<TripInformation> {
+class _TripInformationPageState extends State<TripInformationPage> {
   Future<ImageDataDetails>? _imageDetails;
   final ImageService _imageService = ImageService();
   Set<int> _selectedImages = {};
@@ -68,7 +69,7 @@ class _TripInformationState extends State<TripInformation> {
                             top: 10.0,
                             bottom: 10.0), // Adjust padding as needed
 
-                        color: Color.fromARGB(22, 77, 202, 171),
+                        color: Color.fromARGB(20, 28, 203, 159),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

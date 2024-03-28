@@ -118,7 +118,7 @@ class _MenuPageState extends State<MenuPage> {
                     return ClipRRect(
                       borderRadius: BorderRadius.circular(16.0),
                       child: Container(
-                        color: Color.fromARGB(49, 153, 209, 50),
+                        color: Color.fromARGB(30, 28, 203, 159),
                         padding: const EdgeInsets.only(
                             bottom: 30.0, left: 10.0, right: 10.0),
                         child: GridView.builder(

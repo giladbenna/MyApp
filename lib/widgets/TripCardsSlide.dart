@@ -49,7 +49,7 @@ class _TripCardsSlideState extends State<TripCardsSlide> {
           return ClipRRect(
             borderRadius: BorderRadius.circular(15.0),
             child: Container(
-              color: Color.fromARGB(49, 153, 209, 50),
+              color: Color.fromARGB(45, 28, 203, 159),
               height: 340, // Increased height to accommodate all elements
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
