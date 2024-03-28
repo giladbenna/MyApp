@@ -52,6 +52,7 @@ class _CategoryTripPageState extends State<CategoryTripPage> {
                       itemBuilder: (context, index) {
                         CategoryTripCard item = snapshot.data![index];
                         return Container(
+                          margin: EdgeInsets.only(bottom: 15),
                           width: double.infinity, // Full width of the parent
                           height: 200, // Fixed height for the card
                           child: Card(
@@ -110,33 +111,36 @@ class _CategoryTripPageState extends State<CategoryTripPage> {
                                           ),
                                         ),
                                         SizedBox(height: 40),
-                                        ElevatedButton.icon(
-                                          icon: Image.asset(
-                                              'assets/images/show_me_icon_removebg.png',
-                                              width: 32),
-                                          label: Text(
-                                            'Show Me',
-                                            style: TextStyle(
-                                                color: Color.fromARGB(
-                                                    220, 11, 3, 133)),
-                                          ),
-                                          style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateProperty.all(
-                                                    Colors.white70),
-                                          ),
-                                          onPressed: () {
-                                            // Use Navigator to push TripInformationPage onto the stack
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    TripInformationPage(
-                                                  imageId: item.id,
+                                        Container(
+                                          width: 200,
+                                          child: ElevatedButton.icon(
+                                            icon: Image.asset(
+                                                'assets/images/show_me_icon_removebg.png',
+                                                width: 32),
+                                            label: Text(
+                                              'Show Me',
+                                              style: TextStyle(
+                                                  color: Color.fromARGB(
+                                                      220, 11, 3, 133)),
+                                            ),
+                                            style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStateProperty.all(
+                                                      Colors.white70),
+                                            ),
+                                            onPressed: () {
+                                              // Use Navigator to push TripInformationPage onto the stack
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      TripInformationPage(
+                                                    imageId: item.id,
+                                                  ),
                                                 ),
-                                              ),
-                                            );
-                                          },
+                                              );
+                                            },
+                                          ),
                                         ),
                                         SizedBox(height: 20),
                                         Text(
