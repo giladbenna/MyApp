@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/models/CategoryTripCard.dart';
+import 'package:my_app/services/CategoryTripService.dart';
 import 'package:my_app/services/ImageService.dart';
 import 'package:my_app/views/TripInformationPage.dart';
 import 'package:my_app/widgets/CustomSearchBar%20.dart';
@@ -14,15 +15,13 @@ class CategoryTripPage extends StatefulWidget {
 }
 
 class _CategoryTripPageState extends State<CategoryTripPage> {
-  final ImageService _imageService = ImageService();
-  String searchQuery = ""; // State to hold the current search query
+  String searchQuery = "";
+  final CategoryTripService _tripService = CategoryTripService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Category - ${widget.category}"),
-      ),
+      appBar: AppBar(title: Text("Category - ${widget.category}")),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -38,8 +37,7 @@ class _CategoryTripPageState extends State<CategoryTripPage> {
               ),
               SizedBox(height: 20),
               FutureBuilder<List<CategoryTripCard>>(
-                future:
-                    _imageService.loadImageDetailsByCategory(widget.category),
+                future: _tripService.loadItems(widget.category),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done &&
                       snapshot.hasData) {
@@ -54,124 +52,114 @@ class _CategoryTripPageState extends State<CategoryTripPage> {
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: filteredList.length,
                       itemBuilder: (context, index) {
-                        CategoryTripCard item = filteredList[index];
-                        return Container(
-                          margin: EdgeInsets.only(bottom: 15),
-                          width: double.infinity, // Full width of the parent
-                          height: 200, // Fixed height for the card
-                          child: Card(
-                            color: Colors
-                                .white, // Set the card's background color to white
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  10.0), // Rounded corners for the card
-                            ),
-                            child: Row(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(
-                                        10.0), // Top left corner
-                                    bottomLeft: Radius.circular(
-                                        10.0), // Bottom left corner
+                        var item = filteredList[index];
+                        return Card(
+                          child: Stack(
+                            children: [
+                              Row(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(10.0),
+                                        bottomLeft: Radius.circular(10.0)),
+                                    child: Image.network(item.url,
+                                        fit: BoxFit.cover,
+                                        width: 190,
+                                        height: 200),
                                   ),
-                                  child: Image.network(
-                                    item.url,
-                                    fit: BoxFit.cover,
-                                    width:
-                                        190, // Specify your desired width for the image
-                                    height:
-                                        200, // Make the image fill the card height
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(
-                                        8.0), // Add padding around the text
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          item.title,
-                                          style: TextStyle(
-                                            fontFamily: 'titleFont',
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w300,
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            item.title,
+                                            style: TextStyle(
+                                                fontFamily: 'titleFont',
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300),
+                                            overflow: TextOverflow.clip,
                                           ),
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                        SizedBox(height: 5),
-                                        Text(
-                                          item.subTitle, // SubTitle part
-                                          style: TextStyle(
-                                            fontFamily: 'titleFont',
-                                            fontSize: 12,
-                                            color: Color.fromARGB(
-                                                255, 155, 154, 148),
-                                            fontWeight: FontWeight.w300,
+                                          SizedBox(height: 5),
+                                          Text(
+                                            item.subTitle,
+                                            style: TextStyle(
+                                                fontFamily: 'titleFont',
+                                                fontSize: 12,
+                                                color: Color.fromARGB(
+                                                    255, 155, 154, 148),
+                                                fontWeight: FontWeight.w300),
                                           ),
-                                        ),
-                                        SizedBox(height: 40),
-                                        Container(
-                                          width: 200,
-                                          child: ElevatedButton.icon(
-                                            icon: Image.asset(
-                                                'assets/images/show_me_icon_removebg.png',
-                                                width: 32),
-                                            label: Text(
-                                              'Show Me',
-                                              style: TextStyle(
-                                                  color: Color.fromARGB(
-                                                      220, 11, 3, 133)),
+                                          SizedBox(height: 40),
+                                          Container(
+                                            width: 200,
+                                            child: ElevatedButton.icon(
+                                              icon: Image.asset(
+                                                  'assets/images/show_me_icon_removebg.png',
+                                                  width: 32),
+                                              label: Text('Show Me',
+                                                  style: TextStyle(
+                                                      color: Color.fromARGB(
+                                                          220, 11, 3, 133))),
+                                              style: ButtonStyle(
+                                                  backgroundColor:
+                                                      MaterialStateProperty.all(
+                                                          Colors.white70)),
+                                              onPressed: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          TripInformationPage(
+                                                              imageId:
+                                                                  item.id)),
+                                                );
+                                              },
                                             ),
-                                            style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStateProperty.all(
-                                                      Colors.white70),
-                                            ),
-                                            onPressed: () {
-                                              // Use Navigator to push TripInformationPage onto the stack
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      TripInformationPage(
-                                                    imageId: item.id,
-                                                  ),
-                                                ),
-                                              );
-                                            },
                                           ),
-                                        ),
-                                        SizedBox(height: 20),
-                                        Text(
-                                          item.location, // SubTitle part
-                                          style: TextStyle(
-                                            fontFamily: 'titleFont',
-                                            fontSize: 12,
-                                            color:
-                                                Color.fromARGB(255, 27, 27, 27),
-                                            fontWeight: FontWeight.w300,
+                                          SizedBox(height: 20),
+                                          Text(
+                                            item.location,
+                                            style: TextStyle(
+                                                fontFamily: 'titleFont',
+                                                fontSize: 12,
+                                                color: Color.fromARGB(
+                                                    255, 27, 27, 27),
+                                                fontWeight: FontWeight.w300),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
+                                ],
+                              ),
+                              Positioned(
+                                top:
+                                    30, // Adjust as necessary to align with your design
+                                right:
+                                    8, // Adjust as necessary to align with your design
+                                child: IconButton(
+                                  icon: Icon(
+                                      item.favorite
+                                          ? Icons.favorite
+                                          : Icons.favorite_border,
+                                      color: Colors.red,
+                                      size:
+                                          35), // Increase icon size as desired
+                                  onPressed: () => _toggleFavorite(item),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         );
                       },
                     );
                   } else if (snapshot.hasError) {
                     return Text("Error: ${snapshot.error}");
-                  } else {
-                    return CircularProgressIndicator();
                   }
+                  return CircularProgressIndicator();
                 },
               ),
             ],
@@ -180,4 +168,139 @@ class _CategoryTripPageState extends State<CategoryTripPage> {
       ),
     );
   }
+
+  void _toggleFavorite(CategoryTripCard item) async {
+    setState(() {
+      item.favorite = !item.favorite;
+    });
+    await _tripService.updateFavoriteStatus(
+        widget.category, item.id, item.favorite);
+  }
 }
+
+
+
+// return ListView.builder(
+//                       shrinkWrap: true,
+//                       physics: NeverScrollableScrollPhysics(),
+//                       itemCount: filteredList.length,
+//                       itemBuilder: (context, index) {
+//                         var item = filteredList[index];
+//                         return Card(
+//                           child: Row(
+//                             children: [
+//                               // Your existing row content
+//                               ClipRRect(
+//                                 borderRadius: BorderRadius.only(
+//                                   topLeft:
+//                                       Radius.circular(10.0), // Top left corner
+//                                   bottomLeft: Radius.circular(
+//                                       10.0), // Bottom left corner
+//                                 ),
+//                                 child: Image.network(
+//                                   item.url,
+//                                   fit: BoxFit.cover,
+//                                   width:
+//                                       190, // Specify your desired width for the image
+//                                   height:
+//                                       200, // Make the image fill the card height
+//                                 ),
+//                               ),
+//                               Expanded(
+//                                 child: Padding(
+//                                   padding: const EdgeInsets.all(
+//                                       8.0), // Add padding around the text
+//                                   child: Column(
+//                                     crossAxisAlignment:
+//                                         CrossAxisAlignment.start,
+//                                     mainAxisAlignment: MainAxisAlignment.start,
+//                                     children: [
+//                                       Row(
+//                                         children: [
+//                                           Text(
+//                                             item.title,
+//                                             style: TextStyle(
+//                                               fontFamily: 'titleFont',
+//                                               fontSize: 16,
+//                                               fontWeight: FontWeight.w300,
+//                                             ),
+//                                             overflow: TextOverflow.ellipsis,
+//                                           ),
+//                                           SizedBox(width: 20),
+//                                           IconButton(
+//                                             icon: Icon(
+//                                               item.favorite
+//                                                   ? Icons.favorite
+//                                                   : Icons.favorite_border,
+//                                               color: Colors.red,
+//                                               size:
+//                                                   30, // Specified size increase
+//                                             ),
+//                                             onPressed: () =>
+//                                                 _toggleFavorite(item),
+//                                           ),
+//                                         ],
+//                                       ),
+//                                       SizedBox(height: 5),
+//                                       Text(
+//                                         item.subTitle, // SubTitle part
+//                                         style: TextStyle(
+//                                           fontFamily: 'titleFont',
+//                                           fontSize: 12,
+//                                           color: Color.fromARGB(
+//                                               255, 155, 154, 148),
+//                                           fontWeight: FontWeight.w300,
+//                                         ),
+//                                       ),
+//                                       SizedBox(height: 40),
+//                                       Container(
+//                                         width: 200,
+//                                         child: ElevatedButton.icon(
+//                                           icon: Image.asset(
+//                                               'assets/images/show_me_icon_removebg.png',
+//                                               width: 32),
+//                                           label: Text(
+//                                             'Show Me',
+//                                             style: TextStyle(
+//                                                 color: Color.fromARGB(
+//                                                     220, 11, 3, 133)),
+//                                           ),
+//                                           style: ButtonStyle(
+//                                             backgroundColor:
+//                                                 MaterialStateProperty.all(
+//                                                     Colors.white70),
+//                                           ),
+//                                           onPressed: () {
+//                                             // Use Navigator to push TripInformationPage onto the stack
+//                                             Navigator.push(
+//                                               context,
+//                                               MaterialPageRoute(
+//                                                 builder: (context) =>
+//                                                     TripInformationPage(
+//                                                   imageId: item.id,
+//                                                 ),
+//                                               ),
+//                                             );
+//                                           },
+//                                         ),
+//                                       ),
+//                                       SizedBox(height: 20),
+//                                       Text(
+//                                         item.location, // SubTitle part
+//                                         style: TextStyle(
+//                                           fontFamily: 'titleFont',
+//                                           fontSize: 12,
+//                                           color:
+//                                               Color.fromARGB(255, 27, 27, 27),
+//                                           fontWeight: FontWeight.w300,
+//                                         ),
+//                                       ),
+//                                     ],
+//                                   ),
+//                                 ),
+//                               ),
+//                             ],
+//                           ),
+//                         );
+//                       },
+//                     );

@@ -10,8 +10,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-
-  // Adjust the initial position of the line to align with the first tab
   double _linePosition = 0;
 
   @override
@@ -54,7 +52,7 @@ class _HomePageState extends State<HomePage> {
               curve: Curves.easeInOut,
               margin: EdgeInsets.only(left: _linePosition, top: 0),
               width: screenWidth / 3, // Width based on number of items
-              height: 2.0,
+              height: 5.0,
               color: Colors.amber[800], // Line color
             ),
             Row(
@@ -72,12 +70,12 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Icon(
                             index == 0
-                                ? Icons.explore
+                                ? Icons.explore_outlined
                                 : index == 1
-                                    ? Icons.favorite
-                                    : Icons.account_circle,
+                                    ? Icons.favorite_border
+                                    : Icons.account_circle_outlined,
                             color: _selectedIndex == index
-                                ? Colors.amber[800]
+                                ? Colors.black
                                 : Colors.grey,
                           ),
                           Text(
@@ -88,9 +86,9 @@ class _HomePageState extends State<HomePage> {
                                     : 'Profile',
                             style: TextStyle(
                               fontFamily:
-                                  'YourCustomFont', // Replace with your actual font
+                                  'primeryFont', // Replace with your actual font
                               color: _selectedIndex == index
-                                  ? Colors.amber[800]
+                                  ? Colors.black
                                   : Colors.grey,
                             ),
                           ),

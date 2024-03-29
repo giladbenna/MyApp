@@ -4,7 +4,8 @@
     "url": "https://cdn.enjoytravel.com/img/travel-news/zhangye-danxia-geopark-china.jpg",
     "title": "Zhangye Danxia Geopark",
     "subTitle": "FAMILY TRIP",
-    "location": "Puerto Rico, USA"
+    "location": "Puerto Rico, USA",
+    "favorite" : false
 
   },
   {
@@ -12,20 +13,23 @@
     "url": "https://www.myglobalviewpoint.com/wp-content/uploads/2023/08/Most-Beautiful-Places-to-Visit-in-Canada-1200.jpg",
     "title": "Canadian Rockies",
     "subTitle": "FAMILY TRIP",
-    "location": "Puerto Rico, USA"
+    "location": "Puerto Rico, USA",
+    "favorite" : false
   },
   {
     "id": "3",
     "url": "https://img.traveltriangle.com/blog/wp-content/uploads/2014/11/cover-for-Places-To-Visit-In-August-In-The-World.jpg",
     "title": "Santorini",
     "subTitle": "FAMILY TRIP",
-    "location": "Puerto Rico, USA"
+    "location": "Puerto Rico, USA",
+    "favorite" : false
   },
   {
     "id": "4",
     "url": "https://i.ytimg.com/vi/lugard7P0nw/maxresdefault.jpg",
     "title": "Sahara Desert",
     "subTitle": "FAMILY TRIP",
-    "location": "Puerto Rico, USA"
+    "location": "Puerto Rico, USA",
+    "favorite" : false
   }
 ]

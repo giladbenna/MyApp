@@ -4,7 +4,8 @@
     "url": "https://thepointsguy.global.ssl.fastly.net/us/originals/2019/11/Dorado-Beach-Hotel_Puerto-Rico-Review-22.jpg",
     "title": "Puerto Rico",
     "subTitle": "FAMILY TRIP",
-    "location": "Puerto Rico, USA"
+    "location": "Puerto Rico, USA",
+    "favorite" : true
 
   },
   {
@@ -12,20 +13,23 @@
     "url": "https://assets.resortpass.com/uploads/image/picture/15731/hiltonwaikoloa_poolaerial.jpg",
     "title": "Hawaii",
     "subTitle": "FAMILY TRIP",
-    "location": "Puerto Rico, USA"
+    "location": "Puerto Rico, USA",
+    "favorite" : false
   },
   {
     "id": "3",
     "url": "https://wanderwithalex.com/wp-content/uploads/2023/04/Paros-Greece.jpg",
     "title": "Greece",
     "subTitle": "FAMILY TRIP",
-    "location": "Puerto Rico, USA"
+    "location": "Puerto Rico, USA",
+    "favorite" : false
   },
   {
     "id": "4",
     "url": "https://www.dreamexoticrentals.com/images/Caribbean/Jamaica/OverwaterBungalowHoneymoon/1.jpg",
     "title": "Jamaica",
     "subTitle": "FAMILY TRIP",
-    "location": "Puerto Rico, USA"
+    "location": "Puerto Rico, USA",
+    "favorite" : false
   }
 ]

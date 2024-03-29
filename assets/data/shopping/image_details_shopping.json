@@ -4,7 +4,8 @@
     "url": "https://www.aspasios.com/blog/wp-content/uploads/2022/05/la-roca-village.jpg",
     "title": "La Roca Village Shopping",
     "subTitle": "FAMILY TRIP",
-    "location": "Puerto Rico, USA"
+    "location": "Puerto Rico, USA",
+    "favorite" : false
 
   },
   {
@@ -12,20 +13,23 @@
     "url": "https://www.japantimes.co.jp/uploads/imported_images/uploads/2020/08/np_file_29293.jpeg",
     "title": "Traditional Japanese Shopping",
     "subTitle": "FAMILY TRIP",
-    "location": "Puerto Rico, USA"
+    "location": "Puerto Rico, USA",
+    "favorite" : false
   },
   {
     "id": "3",
     "url": "https://planetofhotels.com/guide/sites/default/files/styles/node__blog_post__bp_banner/public/2022-01/Myeong-Dong-shopping-street.jpeg",
     "title": "Downtown & Street Shopping",
     "subTitle": "FAMILY TRIP",
-    "location": "Puerto Rico, USA"
+    "location": "Puerto Rico, USA",
+    "favorite" : false
   },
   {
     "id": "4",
     "url": "https://cdn.getyourguide.com/img/tour/5daafebd4cf0a.jpeg/97.jpg",
     "title": "Souk Semmarine",
     "subTitle": "FAMILY TRIP",
-    "location": "Puerto Rico, USA"
+    "location": "Puerto Rico, USA",
+    "favorite" : false
   }
 ]
