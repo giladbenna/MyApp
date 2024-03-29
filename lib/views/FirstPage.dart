@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/views/HomePage.dart';
 import 'package:my_app/views/LoginPage.dart';
 import 'package:my_app/views/MenuPage.dart';
 
@@ -31,7 +32,7 @@ class FirstPage extends StatelessWidget {
               ElevatedButton(
                 onPressed: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MenuPage()),
+                  MaterialPageRoute(builder: (context) => HomePage()),
                 ),
                 child: Text('Go as Guest'),
               ),

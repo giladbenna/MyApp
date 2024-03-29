@@ -43,14 +43,18 @@ class _CategoryTripPageState extends State<CategoryTripPage> {
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done &&
                       snapshot.hasData) {
+                    var filteredList = snapshot.data!.where((item) {
+                      return item.title.toLowerCase().contains(searchQuery) ||
+                          item.subTitle.toLowerCase().contains(searchQuery) ||
+                          item.location.toLowerCase().contains(searchQuery);
+                    }).toList();
+
                     return ListView.builder(
-                      shrinkWrap:
-                          true, // Important to keep the ListView within the SingleChildScrollView
-                      physics:
-                          NeverScrollableScrollPhysics(), // To use ListView inside SingleChildScrollView
-                      itemCount: snapshot.data!.length,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: filteredList.length,
                       itemBuilder: (context, index) {
-                        CategoryTripCard item = snapshot.data![index];
+                        CategoryTripCard item = filteredList[index];
                         return Container(
                           margin: EdgeInsets.only(bottom: 15),
                           width: double.infinity, // Full width of the parent

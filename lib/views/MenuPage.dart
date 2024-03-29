@@ -14,6 +14,7 @@ class MenuPage extends StatefulWidget {
 
 class _MenuPageState extends State<MenuPage> {
   final ImageService _imageService = ImageService();
+  int _selectedIndex = 0; // Current index
 
   String searchQuery = "";
 
@@ -95,7 +96,6 @@ class _MenuPageState extends State<MenuPage> {
                   ],
                 ),
               ),
-
               SizedBox(height: 20),
               CustomSearchBar(
                 onSearchChanged: (query) {
@@ -235,45 +235,10 @@ class _MenuPageState extends State<MenuPage> {
                   imageUrl4: animalsUrls[1],
                 ),
               ),
-              // InkWell(
-              //   onTap: () {
-              //     Navigator.of(context).push(
-              //       MaterialPageRoute(builder: (context) => AnimalMenu()),
-              //     );
-              //   },
-              //   child: Container(
-              //     width: double
-              //         .infinity, // Makes the container take up all available width
-              //     height: 400, // Set a fixed height for your button
-              //     decoration: BoxDecoration(
-              //       image: DecorationImage(
-              //         image: NetworkImage(
-              //             urlAnimals), // Replace with your image URL
-              //         fit: BoxFit
-              //             .cover, // Covers the area of the button without stretching the image
-              //       ),
-              //       borderRadius: BorderRadius.circular(
-              //           10), // Optional: if you want rounded corners
-              //     ),
-              //     child: Center(
-              //       child: Text(
-              //         'Go to Animal Menu',
-              //         style: TextStyle(
-              //           color: Colors
-              //               .white, // Choose a color that contrasts well with your image
-              //           fontSize: 18,
-              //           fontWeight: FontWeight.bold,
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),
       ),
-      // backgroundColor: Color.fromRGBO(
-      //     255, 253, 208, 1), // Set the light cream background color here
     );
   }
 }
