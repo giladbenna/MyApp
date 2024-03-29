@@ -19,7 +19,7 @@ class CategoryTripService {
   // Adjust to include the category in the method signature
   Future<List<CategoryTripCard>> loadItems(String category) async {
     try {
-      final file = await _localFile(category);
+      final File file = await _localFile(category);
       // Check if the local file exists, if not, initialize from assets
       if (!await file.exists()) {
         final data = await rootBundle

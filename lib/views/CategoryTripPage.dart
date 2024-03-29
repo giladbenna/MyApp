@@ -1,9 +1,17 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_app/models/CategoryTripCard.dart';
 import 'package:my_app/services/CategoryTripService.dart';
 import 'package:my_app/services/ImageService.dart';
 import 'package:my_app/views/TripInformationPage.dart';
 import 'package:my_app/widgets/CustomSearchBar%20.dart';
+import 'package:provider/provider.dart'
+    as provider; // Adding a prefix to provider package
+
+final favoriteProvider =
+    StateProvider.autoDispose.family<bool, String>((ref, id) => false);
 
 class CategoryTripPage extends StatefulWidget {
   final String category;
@@ -140,15 +148,29 @@ class _CategoryTripPageState extends State<CategoryTripPage> {
                                     30, // Adjust as necessary to align with your design
                                 right:
                                     8, // Adjust as necessary to align with your design
-                                child: IconButton(
-                                  icon: Icon(
-                                      item.favorite
-                                          ? Icons.favorite
-                                          : Icons.favorite_border,
-                                      color: Colors.red,
-                                      size:
-                                          35), // Increase icon size as desired
-                                  onPressed: () => _toggleFavorite(item),
+                                child: Consumer(
+                                  builder: (context, ref, child) {
+                                    // Notice change from 'watch' to 'ref'
+                                    // Correctly access the provider for a specific item ID using 'ref.watch'
+                                    final isFavorited =
+                                        ref.watch(favoriteProvider(item.id));
+                                    return IconButton(
+                                      icon: Icon(
+                                        isFavorited
+                                            ? Icons.favorite
+                                            : Icons.favorite_border,
+                                        color: Colors.red,
+                                      ),
+                                      onPressed: () {
+                                        // Correctly toggle the favorite state using 'ref.read' for accessing the notifier
+                                        _toggleFavorite(item, !isFavorited);
+                                        ref
+                                            .read(favoriteProvider(item.id)
+                                                .notifier)
+                                            .state = !isFavorited;
+                                      },
+                                    );
+                                  },
                                 ),
                               ),
                             ],
@@ -169,12 +191,10 @@ class _CategoryTripPageState extends State<CategoryTripPage> {
     );
   }
 
-  void _toggleFavorite(CategoryTripCard item) async {
-    setState(() {
-      item.favorite = !item.favorite;
-    });
+  void _toggleFavorite(CategoryTripCard item, bool isFavorite) async {
+    // item.favorite = !item.favorite;
     await _tripService.updateFavoriteStatus(
-        widget.category, item.id, item.favorite);
+        widget.category, item.id, isFavorite);
   }
 }
 
