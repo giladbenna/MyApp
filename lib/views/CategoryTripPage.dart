@@ -43,7 +43,7 @@ class _CategoryTripPageState extends State<CategoryTripPage> {
                   });
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               FutureBuilder<List<CategoryTripCard>>(
                 future: _tripService.loadItems(widget.category),
                 builder: (context, snapshot) {
@@ -57,7 +57,7 @@ class _CategoryTripPageState extends State<CategoryTripPage> {
 
                     return ListView.builder(
                       shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       itemCount: filteredList.length,
                       itemBuilder: (context, index) {
                         var item = filteredList[index];
@@ -67,7 +67,7 @@ class _CategoryTripPageState extends State<CategoryTripPage> {
                               Row(
                                 children: [
                                   ClipRRect(
-                                    borderRadius: BorderRadius.only(
+                                    borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(10.0),
                                         bottomLeft: Radius.circular(10.0)),
                                     child: Image.network(item.url,
@@ -84,30 +84,30 @@ class _CategoryTripPageState extends State<CategoryTripPage> {
                                         children: [
                                           Text(
                                             item.title,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontFamily: 'titleFont',
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w300),
                                             overflow: TextOverflow.clip,
                                           ),
-                                          SizedBox(height: 5),
+                                          const SizedBox(height: 5),
                                           Text(
                                             item.subTitle,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontFamily: 'titleFont',
                                                 fontSize: 12,
                                                 color: Color.fromARGB(
                                                     255, 155, 154, 148),
                                                 fontWeight: FontWeight.w300),
                                           ),
-                                          SizedBox(height: 40),
+                                          const SizedBox(height: 40),
                                           Container(
                                             width: 200,
                                             child: ElevatedButton.icon(
                                               icon: Image.asset(
                                                   'assets/images/show_me_icon_removebg.png',
                                                   width: 32),
-                                              label: Text('Show Me',
+                                              label: const Text('Show Me',
                                                   style: TextStyle(
                                                       color: Color.fromARGB(
                                                           220, 11, 3, 133))),
@@ -127,10 +127,10 @@ class _CategoryTripPageState extends State<CategoryTripPage> {
                                               },
                                             ),
                                           ),
-                                          SizedBox(height: 20),
+                                          const SizedBox(height: 20),
                                           Text(
                                             item.location,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontFamily: 'titleFont',
                                                 fontSize: 12,
                                                 color: Color.fromARGB(
@@ -181,7 +181,7 @@ class _CategoryTripPageState extends State<CategoryTripPage> {
                   } else if (snapshot.hasError) {
                     return Text("Error: ${snapshot.error}");
                   }
-                  return CircularProgressIndicator();
+                  return const CircularProgressIndicator();
                 },
               ),
             ],
@@ -197,130 +197,3 @@ class _CategoryTripPageState extends State<CategoryTripPage> {
         widget.category, item.id, isFavorite);
   }
 }
-
-
-
-// return ListView.builder(
-//                       shrinkWrap: true,
-//                       physics: NeverScrollableScrollPhysics(),
-//                       itemCount: filteredList.length,
-//                       itemBuilder: (context, index) {
-//                         var item = filteredList[index];
-//                         return Card(
-//                           child: Row(
-//                             children: [
-//                               // Your existing row content
-//                               ClipRRect(
-//                                 borderRadius: BorderRadius.only(
-//                                   topLeft:
-//                                       Radius.circular(10.0), // Top left corner
-//                                   bottomLeft: Radius.circular(
-//                                       10.0), // Bottom left corner
-//                                 ),
-//                                 child: Image.network(
-//                                   item.url,
-//                                   fit: BoxFit.cover,
-//                                   width:
-//                                       190, // Specify your desired width for the image
-//                                   height:
-//                                       200, // Make the image fill the card height
-//                                 ),
-//                               ),
-//                               Expanded(
-//                                 child: Padding(
-//                                   padding: const EdgeInsets.all(
-//                                       8.0), // Add padding around the text
-//                                   child: Column(
-//                                     crossAxisAlignment:
-//                                         CrossAxisAlignment.start,
-//                                     mainAxisAlignment: MainAxisAlignment.start,
-//                                     children: [
-//                                       Row(
-//                                         children: [
-//                                           Text(
-//                                             item.title,
-//                                             style: TextStyle(
-//                                               fontFamily: 'titleFont',
-//                                               fontSize: 16,
-//                                               fontWeight: FontWeight.w300,
-//                                             ),
-//                                             overflow: TextOverflow.ellipsis,
-//                                           ),
-//                                           SizedBox(width: 20),
-//                                           IconButton(
-//                                             icon: Icon(
-//                                               item.favorite
-//                                                   ? Icons.favorite
-//                                                   : Icons.favorite_border,
-//                                               color: Colors.red,
-//                                               size:
-//                                                   30, // Specified size increase
-//                                             ),
-//                                             onPressed: () =>
-//                                                 _toggleFavorite(item),
-//                                           ),
-//                                         ],
-//                                       ),
-//                                       SizedBox(height: 5),
-//                                       Text(
-//                                         item.subTitle, // SubTitle part
-//                                         style: TextStyle(
-//                                           fontFamily: 'titleFont',
-//                                           fontSize: 12,
-//                                           color: Color.fromARGB(
-//                                               255, 155, 154, 148),
-//                                           fontWeight: FontWeight.w300,
-//                                         ),
-//                                       ),
-//                                       SizedBox(height: 40),
-//                                       Container(
-//                                         width: 200,
-//                                         child: ElevatedButton.icon(
-//                                           icon: Image.asset(
-//                                               'assets/images/show_me_icon_removebg.png',
-//                                               width: 32),
-//                                           label: Text(
-//                                             'Show Me',
-//                                             style: TextStyle(
-//                                                 color: Color.fromARGB(
-//                                                     220, 11, 3, 133)),
-//                                           ),
-//                                           style: ButtonStyle(
-//                                             backgroundColor:
-//                                                 MaterialStateProperty.all(
-//                                                     Colors.white70),
-//                                           ),
-//                                           onPressed: () {
-//                                             // Use Navigator to push TripInformationPage onto the stack
-//                                             Navigator.push(
-//                                               context,
-//                                               MaterialPageRoute(
-//                                                 builder: (context) =>
-//                                                     TripInformationPage(
-//                                                   imageId: item.id,
-//                                                 ),
-//                                               ),
-//                                             );
-//                                           },
-//                                         ),
-//                                       ),
-//                                       SizedBox(height: 20),
-//                                       Text(
-//                                         item.location, // SubTitle part
-//                                         style: TextStyle(
-//                                           fontFamily: 'titleFont',
-//                                           fontSize: 12,
-//                                           color:
-//                                               Color.fromARGB(255, 27, 27, 27),
-//                                           fontWeight: FontWeight.w300,
-//                                         ),
-//                                       ),
-//                                     ],
-//                                   ),
-//                                 ),
-//                               ),
-//                             ],
-//                           ),
-//                         );
-//                       },
-//                     );

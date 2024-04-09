@@ -3,6 +3,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:my_app/Providers/CatagoryProvider.dart';
 import 'package:my_app/models/RecommendTripCard.dart';
 import 'package:my_app/services/TripCardsService.dart';
+import 'package:my_app/views/RecommendTripDetailsPage.dart';
 import 'package:provider/provider.dart';
 
 class TripCardsSlide extends StatefulWidget {
@@ -56,113 +57,125 @@ class _TripCardsSlideState extends State<TripCardsSlide> {
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) {
                   RecommendTripCard tripCard = snapshot.data![index];
-                  return Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    margin: EdgeInsets.all(8),
-                    child: Container(
-                      width: 180,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          ClipRRect(
-                            borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(8.0)),
-                            child: Image.network(
-                              tripCard.urlPicture,
-                              height: 150, // Half of the container height
-                              width: double.infinity,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Text(
-                              tripCard.subTitle,
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'primeryFont'),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Text(
-                              tripCard.title,
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                  fontFamily: 'titleFont'),
-                              overflow: TextOverflow.clip,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 8.0, vertical: 4.0),
-                            child: Text(
-                              "${tripCard.time} hours",
-                              style: TextStyle(
-                                  fontSize: 11, fontFamily: 'primeryFont'),
-                            ),
-                          ),
-                          SizedBox(height: 30),
-                          Row(
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 7.0),
-                                child: RatingBarIndicator(
-                                  rating: tripCard.rate,
-                                  itemBuilder: (context, index) => Icon(
-                                    Icons.star,
-                                    color: Colors.amber,
-                                  ),
-                                  itemCount: 5,
-                                  itemSize: 20.0,
-                                  direction: Axis.horizontal,
-                                ),
+                  return GestureDetector(
+                    onTap: () {
+                      // Navigate to the details page and pass the trip ID.
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              RecommendTripDetailsPage(tripId: tripCard.id),
+                        ),
+                      );
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      margin: EdgeInsets.all(8),
+                      child: Container(
+                        width: 180,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            ClipRRect(
+                              borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(8.0)),
+                              child: Image.network(
+                                tripCard.urlPicture,
+                                height: 150, // Half of the container height
+                                width: double.infinity,
+                                fit: BoxFit.cover,
                               ),
-                              Text(
-                                tripCard.rate.toString(),
-                                style: TextStyle(fontSize: 12),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 4),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: RichText(
-                              text: TextSpan(
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text(
+                                tripCard.subTitle,
                                 style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.black, // Default text color
-                                ),
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: 'From ',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  TextSpan(
-                                    text: '\$${tripCard.cost.toString()}',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  TextSpan(
-                                    text: ' per person',
-                                    // Default style is applied, so it's not bold.
-                                  ),
-                                ],
+                                    fontSize: 12,
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: 'primeryFont'),
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
-                          ),
-                        ],
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text(
+                                tripCard.title,
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    fontFamily: 'titleFont'),
+                                overflow: TextOverflow.clip,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8.0, vertical: 4.0),
+                              child: Text(
+                                "${tripCard.time} hours",
+                                style: TextStyle(
+                                    fontSize: 11, fontFamily: 'primeryFont'),
+                              ),
+                            ),
+                            SizedBox(height: 30),
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 7.0),
+                                  child: RatingBarIndicator(
+                                    rating: tripCard.rate,
+                                    itemBuilder: (context, index) => Icon(
+                                      Icons.star,
+                                      color: Colors.amber,
+                                    ),
+                                    itemCount: 5,
+                                    itemSize: 20.0,
+                                    direction: Axis.horizontal,
+                                  ),
+                                ),
+                                Text(
+                                  tripCard.rate.toString(),
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 4),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: RichText(
+                                text: TextSpan(
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black, // Default text color
+                                  ),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text: 'From ',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    TextSpan(
+                                      text: '\$${tripCard.cost.toString()}',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    TextSpan(
+                                      text: ' per person',
+                                      // Default style is applied, so it's not bold.
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   );

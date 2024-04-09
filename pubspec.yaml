@@ -35,6 +35,8 @@ dependencies:
   flutter_rating_bar: ^4.0.0
   path_provider: ^2.0.9
   flutter_riverpod: ^1.0.0
+  smooth_page_indicator: ^1.0.0+2 # Check for the latest version on pub.dev
+
 
 
 
@@ -43,6 +45,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   url_launcher: ^6.2.5
+  http: ^1.2.1
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +78,7 @@ flutter:
     - assets/data/vacation/image_details_vacation_3.json
     - assets/data/vacation/image_details_vacation_4.json
 
+
     - assets/data/roadtrip/image_details_roadtrip.json
     - assets/data/roadtrip/image_details_roadtrip_1.json
     - assets/data/roadtrip/image_details_roadtrip_2.json
@@ -91,6 +95,9 @@ flutter:
     - assets/data/vacation/trip_cards/trip_cards_2.json
     - assets/data/vacation/trip_cards/trip_cards_3.json
     - assets/data/vacation/trip_cards/trip_cards_4.json
+
+    - assets/data/vacation/trip_cards/trip_cards_details/trip_cards_details_1.json
+
 
     - assets/data/adventure/trip_cards/trip_cards_1.json
     - assets/data/adventure/trip_cards/trip_cards_2.json

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/views/HomePage.dart';
 import 'package:my_app/views/LoginPage.dart';
-import 'package:my_app/views/MenuPage.dart';
 
 class FirstPage extends StatelessWidget {
   @override

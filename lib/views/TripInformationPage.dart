@@ -299,7 +299,16 @@ class _TripInformationPageState extends State<TripInformationPage> {
                       height: 1,
                       color: Colors.grey,
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 14),
+
+                    Text(
+                      "Recommend Trips",
+                      style: TextStyle(
+                          fontFamily: 'primeryFont',
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 8),
 
                     TripCardsSlide(
                       id: tripDetails.id,

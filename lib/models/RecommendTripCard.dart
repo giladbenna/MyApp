@@ -1,4 +1,5 @@
 class RecommendTripCard {
+  final String id;
   final String urlPicture;
   final String subTitle;
   final String title;
@@ -8,6 +9,7 @@ class RecommendTripCard {
   final int likes;
 
   RecommendTripCard({
+    required this.id,
     required this.urlPicture,
     required this.subTitle,
     required this.title,
@@ -19,6 +21,7 @@ class RecommendTripCard {
 
   factory RecommendTripCard.fromJson(Map<String, dynamic> json) {
     return RecommendTripCard(
+      id: json['id'],
       urlPicture: json['urlPicture'],
       subTitle: json['subTitle'],
       title: json['title'],
@@ -31,6 +34,7 @@ class RecommendTripCard {
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'urlPicture': urlPicture,
       'subTitle': subTitle,
       'title': title,

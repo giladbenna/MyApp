@@ -14,7 +14,6 @@ class MenuPage extends StatefulWidget {
 
 class _MenuPageState extends State<MenuPage> {
   final ImageService _imageService = ImageService();
-  int _selectedIndex = 0; // Current index
 
   String searchQuery = "";
 
