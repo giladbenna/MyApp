@@ -96,8 +96,8 @@ flutter:
     - assets/data/vacation/trip_cards/trip_cards_3.json
     - assets/data/vacation/trip_cards/trip_cards_4.json
 
-    - assets/data/vacation/trip_cards/trip_cards_details/trip_cards_details_1.json
-    - assets/data/vacation/trip_cards/trip_cards_details/trip_cards_details_2.json
+    - assets/data/vacation/trip_cards/trip_cards_details/trip_cards_details_1_1.json
+    - assets/data/vacation/trip_cards/trip_cards_details/trip_cards_details_1_2.json
 
 
 

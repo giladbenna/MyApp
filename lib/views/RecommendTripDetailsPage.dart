@@ -7,9 +7,12 @@ import 'package:my_app/widgets/ImageSlider.dart';
 import 'package:provider/provider.dart';
 
 class RecommendTripDetailsPage extends StatefulWidget {
+  final String tripIdCard;
   final String tripId;
 
-  RecommendTripDetailsPage({Key? key, required this.tripId}) : super(key: key);
+  RecommendTripDetailsPage(
+      {Key? key, required this.tripIdCard, required this.tripId})
+      : super(key: key);
 
   @override
   _RecommendTripDetailsPageState createState() =>
@@ -24,8 +27,8 @@ class _RecommendTripDetailsPageState extends State<RecommendTripDetailsPage> {
     super.initState();
     final selectedCategory =
         Provider.of<CategoryProvider>(context, listen: false).selectedCategory;
-    tripDetail =
-        TripDetailsService().fetchTripDetails(selectedCategory, widget.tripId);
+    tripDetail = TripDetailsService()
+        .fetchTripDetails(selectedCategory, widget.tripIdCard, widget.tripId);
   }
 
   @override

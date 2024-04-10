@@ -63,8 +63,8 @@ class _TripCardsSlideState extends State<TripCardsSlide> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              RecommendTripDetailsPage(tripId: tripCard.id),
+                          builder: (context) => RecommendTripDetailsPage(
+                              tripIdCard: tripCard.id, tripId: widget.id),
                         ),
                       );
                     },
