@@ -118,6 +118,113 @@ class _RecommendTripDetailsPageState extends State<RecommendTripDetailsPage> {
                       ),
                     ),
                     Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              tripDetails.isFreeCancel
+                                  ? Image.asset(
+                                      'assets/images/free_cancel_icon.png',
+                                      width: 40,
+                                      height: 40)
+                                  : Image.asset(
+                                      'assets/images/non_cancel_icon.png',
+                                      width: 40,
+                                      height: 40),
+                              SizedBox(width: 10),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    tripDetails.isFreeCancel
+                                        ? Text('Free Cancellation',
+                                            style: TextStyle(fontSize: 16))
+                                        : Text('Non Free Cancellation',
+                                            style: TextStyle(fontSize: 16)),
+                                    tripDetails.isFreeCancel
+                                        ? Text('You can cancel anytime',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.grey))
+                                        : Text('Cancellation fees apply',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.grey)),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Image.asset('assets/images/time_trip_icon.png',
+                                  width: 40, height: 40),
+                              SizedBox(
+                                  width:
+                                      10), // Add some space between the image and the texts
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment
+                                    .start, // Align text to the start of the column
+                                children: [
+                                  Text('${tripDetails.time.toString()} Hours'),
+                                  Text(
+                                      'Check availability to see starting times.',
+                                      style: TextStyle(
+                                          fontSize: 12, color: Colors.grey)),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              tripDetails.languages.isEmpty
+                                  ? Image.asset(
+                                      'assets/images/non_live_guide_icon.png',
+                                      width: 40,
+                                      height: 40)
+                                  : Image.asset(
+                                      'assets/images/live_guide_icon.png',
+                                      width: 40,
+                                      height: 40),
+                              SizedBox(width: 10),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      tripDetails.languages.isEmpty
+                                          ? 'No Live Tour Guide'
+                                          : 'Live Tour Guide',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    // Display the list of languages or an alternate text if the list is empty
+                                    Text(
+                                      tripDetails.languages.isEmpty
+                                          ? ' '
+                                          : tripDetails.languages.join(
+                                              ', '), // Join all languages with a comma
+                                      style: TextStyle(
+                                          fontSize: 12, color: Colors.grey),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(

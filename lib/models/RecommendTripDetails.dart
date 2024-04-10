@@ -6,20 +6,25 @@ class RecommendTripDetails {
   final int reviews;
   final double cost;
   final String description;
+  final bool isFreeCancel;
+  final double time;
   final List<String> urls;
-  final List<String> popularDays; // Add this line
+  final List<String> popularDays;
+  final List<String> languages;
 
-  RecommendTripDetails({
-    required this.id,
-    required this.title,
-    required this.subTitle,
-    required this.rates,
-    required this.reviews,
-    required this.cost,
-    required this.description,
-    required this.urls,
-    required this.popularDays, // Add this line
-  });
+  RecommendTripDetails(
+      {required this.id,
+      required this.title,
+      required this.subTitle,
+      required this.rates,
+      required this.reviews,
+      required this.cost,
+      required this.description,
+      required this.isFreeCancel,
+      required this.time,
+      required this.urls,
+      required this.popularDays,
+      required this.languages});
 
   factory RecommendTripDetails.fromJson(Map<String, dynamic> json) {
     return RecommendTripDetails(
@@ -31,7 +36,10 @@ class RecommendTripDetails {
       cost: json['cost'].toDouble(),
       description: json['description'],
       urls: List<String>.from(json['urls']),
-      popularDays: List<String>.from(json['popularDays']), // Add this line
+      popularDays: List<String>.from(json['popularDays']),
+      languages: List<String>.from(json['languages']),
+      isFreeCancel: json['isFreeCancel'],
+      time: json['time'].toDouble(),
     );
   }
 
@@ -44,8 +52,11 @@ class RecommendTripDetails {
       'reviews': reviews,
       'cost': cost,
       'description': description,
+      'isFreeCancel': isFreeCancel,
+      'time': time,
       'urls': urls,
-      'popularDays': popularDays, // Add this line
+      'popularDays': popularDays,
+      'languages': languages
     };
   }
 }

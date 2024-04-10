@@ -1,16 +1,16 @@
 {
-    "id": "1",
-    "title": "Castillo San Felipe del Morro",
-    "subTitle": "GUIDED TOUR",
-    "rates": 4.8,
-    "reviews": 150,
-    "cost": 199.99,
+    "id": "2",
+    "title": "El Yunque National Forest",
+    "subTitle": "WATER GUIDED TOUR",
+    "rates": 4.2,
+    "reviews": 223,
+    "cost": 249.99,
     "description": "Learn about the story behind one of the greatest wonders of military engineering in Spain: from colonization to World War II.\n\nFew structures represent the legacy of Puerto Rico in the Caribbean and the Americas more than the Castle San Felipe del Morro. This fortification at the corner of the islet of the Old San Juan now welcomes cruises sailing in and out of the bay. During most of its 500-year history, it was an important military post for Spain and later for the United States. ",
-    "isFreeCancel": true,
+    "isFreeCancel": false,
     "time": 1.5,
     "urls": ["https://images7.alphacoders.com/117/1176059.jpg", "https://cdn.hswstatic.com/gif/10-breathtaking-views-1-orig.jpg","https://wallpapercave.com/wp/wp10763461.jpg"],
-    "popularDays": ["Fri", "Sat", "Sun"],
-    "languages": ["English", "Hebrew", "Spanish"]
+    "popularDays": ["Fri", "Mon", "Sun"],
+    "languages": []
 
 }
   

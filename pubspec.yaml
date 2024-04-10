@@ -97,6 +97,8 @@ flutter:
     - assets/data/vacation/trip_cards/trip_cards_4.json
 
     - assets/data/vacation/trip_cards/trip_cards_details/trip_cards_details_1.json
+    - assets/data/vacation/trip_cards/trip_cards_details/trip_cards_details_2.json
+
 
 
     - assets/data/adventure/trip_cards/trip_cards_1.json
@@ -124,6 +126,21 @@ flutter:
     - assets/images/dont_forget_pic.png
     - assets/images/show_me_icon.png
     - assets/images/show_me_icon_removebg.png
+    - assets/images/free_cancel_icon.png
+    - assets/images/non_cancel_icon.png
+    - assets/images/time_trip_icon.png
+    - assets/images/time_trip_icon2.png
+    - assets/images/live_guide_icon.png
+    - assets/images/live_guide_icon2.png
+    - assets/images/non_live_guide_icon.png
+
+
+
+
+
+
+
+
 
 
 
