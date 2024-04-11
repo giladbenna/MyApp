@@ -4,11 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_app/models/CategoryTripCard.dart';
 import 'package:my_app/services/CategoryTripService.dart';
-import 'package:my_app/services/ImageService.dart';
 import 'package:my_app/views/TripInformationPage.dart';
 import 'package:my_app/widgets/CustomSearchBar%20.dart';
-import 'package:provider/provider.dart'
-    as provider; // Adding a prefix to provider package
 
 final favoriteProvider =
     StateProvider.autoDispose.family<bool, String>((ref, id) => false);
